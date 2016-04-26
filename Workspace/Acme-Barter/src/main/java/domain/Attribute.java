@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
@@ -30,15 +32,15 @@ public class Attribute extends DomainEntity{
 	
 	
 	// Relationships ----------------------------------------------------------
-	private AttributeDescription attributeDescription;
+	private Collection<AttributeDescription> attributeDescription;
 
 	@Valid
 	@NotNull
 	@OneToMany(mappedBy="attribute")
-	public AttributeDescription getAttributeDescription() {
+	public Collection<AttributeDescription> getAttributeDescription() {
 		return attributeDescription;
 	}
-	public void setAttributeDescription(AttributeDescription attributeDescription) {
+	public void setAttributeDescription(Collection<AttributeDescription> attributeDescription) {
 		this.attributeDescription = attributeDescription;
 	}
 		
