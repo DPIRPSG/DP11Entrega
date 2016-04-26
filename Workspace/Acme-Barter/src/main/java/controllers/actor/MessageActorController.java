@@ -127,9 +127,6 @@ public class MessageActorController extends AbstractController{
 			if(message.getSubject() == "") {
 				haySubject = false;
 			}
-			if(!(message.getPriority() >= -1 && message.getPriority() <= 1)) {
-				checkPriority = false;
-			}
 			result = createSendModelAndView(message,null, hayBody, hayRecipients, haySubject, checkPriority);
 		} else {
 			try {

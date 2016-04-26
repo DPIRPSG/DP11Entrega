@@ -589,7 +589,6 @@
 		<property name="body" value="Registrado con exito, bienvenido a Acme-Barter"/>
 		<property name="sentMoment" value="2015/10/13 22:15"/>
 		<property name="sender" ref="administrator1"/>
-		<property name="priority" value="0"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user1"/>
@@ -614,7 +613,6 @@
 		<property name="body" value="Compra viagra"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user4"/>
-		<property name="priority" value="0"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user1"/>
@@ -633,7 +631,6 @@
 		<property name="body" value="Esto es spam"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user4"/>
-		<property name="priority" value="0"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user1"/>
@@ -652,7 +649,6 @@
 		<property name="body" value="Esto es spam"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user2"/>
-		<property name="priority" value="0"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user3"/>
@@ -671,7 +667,6 @@
 		<property name="body" value="Este es mi mensaje 2 para ti"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user1"/>
-		<property name="priority" value="-1"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user2"/>
@@ -690,7 +685,6 @@
 		<property name="body" value="Este es mi mensaje 3 para ti"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user1"/>
-		<property name="priority" value="0"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user2"/>
@@ -709,7 +703,6 @@
 		<property name="body" value="Este es mi mensaje 4 para ti"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user1"/>
-		<property name="priority" value="1"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user2"/>
@@ -728,7 +721,6 @@
 		<property name="body" value="Este es mi mensaje 5 para ti"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user2"/>
-		<property name="priority" value="-1"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user1"/>
@@ -747,7 +739,6 @@
 		<property name="body" value="Este es mi mensaje 6 para ti"/>
 		<property name="sentMoment" value="2016/02/05 22:15"/>
 		<property name="sender" ref="user2"/>
-		<property name="priority" value="1"/>
 		<property name="recipients">
 			<list>
 				<ref bean="user1"/>
