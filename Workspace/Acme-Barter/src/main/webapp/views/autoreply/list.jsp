@@ -14,14 +14,17 @@
 
 	<!-- Listing grid -->
 	<display:table pagesize="5" class="displaytag"
-		name="autoreply" requestURI="autoreply/actor/list.do" id="row_autoreply">
+		name="autoreplies" requestURI="autoreply/actor/list.do" id="row_autoreply">
 		
 		<display:column>
 				<acme:link href="autoreply/actor/edit.do?autoreplyId=${row_autoreply.id}" code="autoreply.edit"/>
 		</display:column>
-				
-		<acme:displayColumn value="${row_autoreply.keyWords}" title="autoreply.keyWords"/>
-		<acme:displayColumn value="${row_autoreply.text}" title="autoreply.text"/>
+		
+		<spring:message code="autoreply.keyWords" var="keywordHeader"/>
+		<acme:displayColumn value="${row_autoreply.keyWords}" title="${keywordHeader}"/>
+		
+		<spring:message code="autoreply.text" var="textHeader"/>
+		<acme:displayColumn value="${row_autoreply.text}" title="${textHeader}"/>
 			
 	</display:table>
 	
