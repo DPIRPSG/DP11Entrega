@@ -2302,7 +2302,82 @@
 		<property name="receiverBarter" ref="barter12"/>
 	</bean>
 	
+	<!-- domain.Complaint -->
 	
+	<bean id="complaint1" class="domain.Complaint">
+		<property name="user" ref="user1"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint2" class="domain.Complaint">
+		<property name="user" ref="user1"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint3" class="domain.Complaint">
+		<property name="user" ref="user2"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint4" class="domain.Complaint">
+		<property name="user" ref="user3"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint5" class="domain.Complaint">
+		<property name="user" ref="user4"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint6" class="domain.Complaint">
+		<property name="user" ref="user6"/>
+		<property name="barter" ref="barter1"/>
+	</bean>
+	
+	<bean id="complaint7" class="domain.Complaint">
+		<property name="user" ref="user1"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint8" class="domain.Complaint">
+		<property name="user" ref="user2"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint9" class="domain.Complaint">
+		<property name="user" ref="user2"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint10" class="domain.Complaint">
+		<property name="user" ref="user3"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint11" class="domain.Complaint">
+		<property name="user" ref="user5"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint12" class="domain.Complaint">
+		<property name="user" ref="user7"/>
+		<property name="match" ref="match1"/>
+	</bean>
+	
+	<bean id="complaint13" class="domain.Complaint">
+		<property name="user" ref="user1"/>
+		<property name="match" ref="match2"/>
+	</bean>
+	
+	<bean id="complaint14" class="domain.Complaint">
+		<property name="user" ref="user2"/>
+		<property name="match" ref="match3"/>
+	</bean>
+	
+	<bean id="complaint15" class="domain.Complaint">
+		<property name="user" ref="user3"/>
+		<property name="barter" ref="barter2"/>
+	</bean>
 	
 	
 	
