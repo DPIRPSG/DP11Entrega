@@ -175,7 +175,7 @@ public class MessageService {
 		for(Autoreply auto:autoreplies){
 			tempResponse = true;
 			for(String s:auto.getKeyWords()){
-				if(!m.getBody().contains(s)){
+				if(!m.getBody().toLowerCase().contains(s.toLowerCase())){
 					tempResponse = false;
 					break;
 				}

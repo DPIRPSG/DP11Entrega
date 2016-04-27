@@ -89,14 +89,17 @@ public class AutoreplyService {
 		
 		Autoreply auto, result;
 		
-		auto = this.findOne(autoreply.getId());
+		if(autoreply.getId() != 0){
+			auto = this.findOne(autoreply.getId());
 		
+			auto.setText(autoreply.getText());
+			auto.setKeyWords(autoreply.getKeyWords());
+		}else{
+			auto = autoreply;
+		}
 		Assert.isTrue(auto.getActor().equals(autoreply.getActor()), "autoreply.edit.notSameActor");
 		
-		auto.setText(autoreply.getText());
-		auto.setKeyWords(autoreply.getKeyWords());
-					
-		result = this.save(autoreply);
+		result = this.save(auto);
 		
 		return result;
 	}

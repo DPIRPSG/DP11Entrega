@@ -18,7 +18,7 @@
 	<form:hidden path="actor" />
 	
 	<acme:textbox code="autoreply.keyWords" path="keyWords"/>
-	<acme:textbox code="autoreply.text" path="text"/>
+	<acme:textarea code="autoreply.text" path="text"/>
 	
 	<br />
 
