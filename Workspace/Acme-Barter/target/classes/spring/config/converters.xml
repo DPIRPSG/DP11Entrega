@@ -53,6 +53,12 @@
 		
 		<bean class="converters.LegalTextToStringConverter" />
 		<bean class="converters.StringToLegalTextConverter" />
+		
+		<bean class="converters.AttributeToStringConverter" />
+		<bean class="converters.StringToAttributeConverter" />
+		
+		<bean class="converters.AttributeDescriptionToStringConverter" />
+		<bean class="converters.StringToAttributeDescriptionConverter" />
 	
 	</util:list>
 	
