@@ -202,6 +202,7 @@
 				<ref bean="folder2"/>
 				<ref bean="folder3"/>
 				<ref bean="folder4"/>
+				<ref bean="folder59"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -228,6 +229,7 @@
 				<ref bean="folder22"/>
 				<ref bean="folder23"/>
 				<ref bean="folder24"/>
+				<ref bean="folder60"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -251,6 +253,7 @@
 				<ref bean="folder26"/>
 				<ref bean="folder27"/>
 				<ref bean="folder28"/>
+				<ref bean="folder61"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -274,6 +277,7 @@
 				<ref bean="folder30"/>
 				<ref bean="folder31"/>
 				<ref bean="folder32"/>
+				<ref bean="folder62"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -297,6 +301,7 @@
 				<ref bean="folder34"/>
 				<ref bean="folder35"/>
 				<ref bean="folder36"/>
+				<ref bean="folder63"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -320,6 +325,7 @@
 				<ref bean="folder38"/>
 				<ref bean="folder39"/>
 				<ref bean="folder40"/>
+				<ref bean="folder64"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -343,6 +349,7 @@
 				<ref bean="folder42"/>
 				<ref bean="folder43"/>
 				<ref bean="folder44"/>
+				<ref bean="folder65"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -369,6 +376,7 @@
 				<ref bean="folder10"/>
 				<ref bean="folder11"/>
 				<ref bean="folder12"/>
+				<ref bean="folder67" />
 			</list>
 		</property>
 		<property name="sent">
@@ -404,6 +412,7 @@
 				<ref bean="folder14"/>
 				<ref bean="folder15"/>
 				<ref bean="folder16"/>
+				<ref bean="folder68" />
 			</list>
 		</property>
 		<property name="sent">
@@ -434,6 +443,7 @@
 				<ref bean="folder18"/>
 				<ref bean="folder19"/>
 				<ref bean="folder20"/>
+				<ref bean="folder69" />
 			</list>
 		</property>
 		<property name="sent">
@@ -466,6 +476,7 @@
 				<ref bean="folder47"/>
 				<ref bean="folder48"/>
 				<ref bean="folder49"/>
+				<ref bean="folder70" />
 			</list>
 		</property>
 		<property name="sent">
@@ -494,6 +505,7 @@
 				<ref bean="folder51"/>
 				<ref bean="folder52"/>
 				<ref bean="folder53"/>
+				<ref bean="folder71" />
 			</list>
 		</property>
 		<property name="sent">
@@ -522,6 +534,7 @@
 				<ref bean="folder56"/>
 				<ref bean="folder57"/>
 				<ref bean="folder58"/>
+				<ref bean="folder72" />
 			</list>
 		</property>
 		<property name="sent">
@@ -552,6 +565,7 @@
 				<ref bean="folder8" />
 				<ref bean="folder45" />
 				<ref bean="folder54" />
+				<ref bean="folder66" />
 			</list>
 		</property>
 		<property name="sent">
@@ -1348,6 +1362,146 @@
 	
 	<bean id="folder58" class="domain.Folder">
 		<property name="name" value="SpamBox"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user7"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder59" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder60" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder61" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder62" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor3"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder63" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor4"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder64" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor5"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder65" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor6"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder66" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder67" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder68" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user3"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder69" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user4"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder70" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user5"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder71" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user6"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder72" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
 		<property name="isSystem" value="true"/>
 		<property name="actor" ref="user7"/>
 		<property name="messages">
