@@ -48,12 +48,6 @@
 		</display:column>
 
 		<!-- Attributes -->
-		<spring:message code="message.priority" var="priorityHeader" />
-		<display:column title="${priorityHeader}"
-			sortable="true">
-			<acme:messagePriority priority="${row_messa.priority}"/>
-		</display:column>
-
 		<spring:message code="message.sentMoment" var="sentMomentHeader" />
 		<display:column title="${sentMomentHeader}"
 			sortable="true" format="{0,date,yyyy/MM/dd }" >
