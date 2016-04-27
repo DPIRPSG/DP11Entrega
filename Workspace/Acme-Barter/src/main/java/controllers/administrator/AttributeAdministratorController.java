@@ -110,6 +110,7 @@ public class AttributeAdministratorController extends AbstractController {
 			attributeService.delete(attribute);
 			result = new ModelAndView("redirect:list.do");						
 		} catch (Throwable oops) {
+			System.out.println(oops);
 			result = createEditModelAndView(attribute, "attribute.commit.error");
 		}
 

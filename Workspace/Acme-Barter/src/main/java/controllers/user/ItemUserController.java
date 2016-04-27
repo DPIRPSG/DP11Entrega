@@ -33,6 +33,24 @@ public class ItemUserController extends AbstractController{
 		super();
 	}
 	
+	// Listing ----------------------------------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Item> items;
+		
+		items = itemService.findAllByUser();		
+
+		result = new ModelAndView("item/list");
+		result.addObject("requestURI", "item/user/list.do");
+		result.addObject("items", items);
+
+		return result;
+	}
+
+	// Creation ---------------------------------------------------------------
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam(required=false) Integer item1Id){
 		ModelAndView result;

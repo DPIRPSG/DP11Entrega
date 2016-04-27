@@ -34,6 +34,7 @@
 		<value>/views/item/tiles.xml</value>
 		<value>/views/match/tiles.xml</value>
 		<value>/views/attribute/tiles.xml</value>
+		<value>/views/attribute-description/tiles.xml</value>
 		
 		<value>/views/forms/tiles.xml</value>
 		

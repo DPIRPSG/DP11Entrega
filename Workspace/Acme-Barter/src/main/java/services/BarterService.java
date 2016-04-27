@@ -310,4 +310,12 @@ public class BarterService {
 
 		return result;
 	}
+
+	public Barter findOneByItemId(int itemId) {
+		Barter result;
+		
+		result = barterRepository.findOneByItemId(itemId);
+		
+		return result;
+	}
 }
