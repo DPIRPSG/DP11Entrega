@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Actor;
+import domain.Autoreply;
 import domain.Folder;
 import domain.Message;
 
@@ -30,6 +31,9 @@ public class MessageService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private AutoreplyService autoreplyService;
 	
 	//Constructors -----------------------------------------------------------
 
@@ -92,22 +96,33 @@ public class MessageService {
 	//Other business methods -------------------------------------------------
 	
 	/**
-	 * Guarda la primera vez
+	 * Guarda la primera vez desde enviar !
 	 */
-	public Message firstSave(Message message){
+	public Message firstSaveNormalSend(Message message){
 		Assert.notNull(message);
 		
 		int sendId, actId;
+		Message result;
 		
 		sendId = message.getSender().getUserAccount().getId();
 		actId = actorService.findByPrincipal().getUserAccount().getId();
 		
 		Assert.isTrue(sendId == actId);
+				
+		result = this.firstSave(message);
+		
+		return result;
+	}
+	
+	/**
+	 * Guarda la primera vez
+	 */
+	private Message firstSave(Message message){
+		Assert.notNull(message);
 		
 		Message result;
 		
 		result = this.save(message);
-		
 		this.addMessageToFolderFirst(result);
 		
 		return result;
@@ -127,19 +142,67 @@ public class MessageService {
 		}
 		
 		for (Actor recipient: message.getRecipients()){
+			boolean autoreply;
+			
+			autoreply = this.isResponseByAutoreply(message, recipient);
 			for (Folder f:recipient.getMessageBoxes()){
-				boolean toInBox; //, toSpamBox;
+				boolean toInBox, toAutoreply;
 				
-				toInBox = f.getName().equals("InBox"); //&& !isSpam;
-				// toSpamBox = f.getName().equals("SpamBox") && isSpam;
+				toInBox = f.getName().equals("InBox") && !autoreply;
+				toAutoreply = f.getName().equals("Autoreply") && autoreply;
 				
-				if (toInBox
-						// (toInBox|| toSpamBox)
+				if ((toInBox|| toAutoreply)
 						&& f.getIsSystem()){
 					folderService.addMessage(f, message);
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Devuelve true en caso de que el mensaje tenga una respuesta automática
+	 * activada y, si es el caso, la envía automáticamente
+	 */
+	private boolean isResponseByAutoreply(Message m, Actor actActorToSend){
+		boolean isResponse, tempResponse;
+		Collection<Autoreply> autoreplies;
+		
+		autoreplies = autoreplyService.findByActor(actActorToSend);
+		isResponse = false;
+		
+		for(Autoreply auto:autoreplies){
+			tempResponse = true;
+			for(String s:auto.getKeyWords()){
+				if(!m.getBody().contains(s)){
+					tempResponse = false;
+					break;
+				}
+			}
+			if(tempResponse){
+				sendResponseAutoreply(actActorToSend, m.getSender(), auto.getText());
+				isResponse = true;
+				break;
+			}
+		}
+		
+		
+		return isResponse;
+	}
+	
+	private void sendResponseAutoreply(Actor newSender, Actor newReceiver, String textToSend){
+		Message toSend;
+		Collection<Actor> recipients;
+		
+		toSend = this.create();
+		recipients = toSend.getRecipients();
+		recipients.add(newReceiver);
+		
+		toSend.setSender(newSender);
+		toSend.setRecipients(recipients);
+		toSend.setBody(textToSend);
+		toSend.setSubject("AUTO-REPLY -- ");
+		
+		this.firstSave(toSend);
 	}
 	
 	

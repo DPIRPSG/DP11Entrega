@@ -133,6 +133,18 @@ public class AutoreplyService {
 		
 		actor = actorService.findByPrincipal();
 		
+		result = this.findByActor(actor);
+		
+		return result;
+	}
+	
+	/**
+	 * Devuelve todos los autoreplies del actor dado
+	 */
+	public Collection<Autoreply> findByActor(Actor actor){
+		Assert.notNull(actorService.findByPrincipal(), "autoreply.NotLoggedActor");
+		Collection<Autoreply> result;
+		
 		Assert.notNull(actor);
 		
 		result = autoreplyRepository.findByActorId(actor.getId());

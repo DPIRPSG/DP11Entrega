@@ -130,7 +130,7 @@ public class MessageActorController extends AbstractController{
 			result = createSendModelAndView(message,null, hayBody, hayRecipients, haySubject, checkPriority);
 		} else {
 			try {
-				messageService.firstSave(message);
+				messageService.firstSaveNormalSend(message);
 				result = new ModelAndView("redirect:../../folder/actor/list.do");
 			} catch (Throwable oops) {
 				result = createSendModelAndView(message, "message.commit.error", true, true, true, true);				
