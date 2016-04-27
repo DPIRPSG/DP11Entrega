@@ -202,6 +202,7 @@
 				<ref bean="folder2"/>
 				<ref bean="folder3"/>
 				<ref bean="folder4"/>
+				<ref bean="folder59"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -228,6 +229,7 @@
 				<ref bean="folder22"/>
 				<ref bean="folder23"/>
 				<ref bean="folder24"/>
+				<ref bean="folder60"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -251,6 +253,7 @@
 				<ref bean="folder26"/>
 				<ref bean="folder27"/>
 				<ref bean="folder28"/>
+				<ref bean="folder61"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -274,6 +277,7 @@
 				<ref bean="folder30"/>
 				<ref bean="folder31"/>
 				<ref bean="folder32"/>
+				<ref bean="folder62"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -297,6 +301,7 @@
 				<ref bean="folder34"/>
 				<ref bean="folder35"/>
 				<ref bean="folder36"/>
+				<ref bean="folder63"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -320,6 +325,7 @@
 				<ref bean="folder38"/>
 				<ref bean="folder39"/>
 				<ref bean="folder40"/>
+				<ref bean="folder64"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -343,6 +349,7 @@
 				<ref bean="folder42"/>
 				<ref bean="folder43"/>
 				<ref bean="folder44"/>
+				<ref bean="folder65"/>
 			</list>
 		</property>
 		<property name="sent">
@@ -369,6 +376,7 @@
 				<ref bean="folder10"/>
 				<ref bean="folder11"/>
 				<ref bean="folder12"/>
+				<ref bean="folder67" />
 			</list>
 		</property>
 		<property name="sent">
@@ -404,6 +412,7 @@
 				<ref bean="folder14"/>
 				<ref bean="folder15"/>
 				<ref bean="folder16"/>
+				<ref bean="folder68" />
 			</list>
 		</property>
 		<property name="sent">
@@ -434,6 +443,7 @@
 				<ref bean="folder18"/>
 				<ref bean="folder19"/>
 				<ref bean="folder20"/>
+				<ref bean="folder69" />
 			</list>
 		</property>
 		<property name="sent">
@@ -466,6 +476,7 @@
 				<ref bean="folder47"/>
 				<ref bean="folder48"/>
 				<ref bean="folder49"/>
+				<ref bean="folder70" />
 			</list>
 		</property>
 		<property name="sent">
@@ -494,6 +505,7 @@
 				<ref bean="folder51"/>
 				<ref bean="folder52"/>
 				<ref bean="folder53"/>
+				<ref bean="folder71" />
 			</list>
 		</property>
 		<property name="sent">
@@ -522,6 +534,7 @@
 				<ref bean="folder56"/>
 				<ref bean="folder57"/>
 				<ref bean="folder58"/>
+				<ref bean="folder72" />
 			</list>
 		</property>
 		<property name="sent">
@@ -552,6 +565,7 @@
 				<ref bean="folder8" />
 				<ref bean="folder45" />
 				<ref bean="folder54" />
+				<ref bean="folder66" />
 			</list>
 		</property>
 		<property name="sent">
@@ -1355,6 +1369,146 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="folder59" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder60" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder61" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder62" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor3"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder63" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor4"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder64" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor5"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder65" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="auditor6"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder66" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user1"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder67" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder68" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user3"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder69" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user4"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder70" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user5"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder71" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user6"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder72" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="user7"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- SocialIdentity -->
@@ -1425,6 +1579,10 @@
 				<value>http://imagenes.pccomponentes.com/hp_g62_b67es_p6100_4gb_500gb_ati_hd5470_15_6__1.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item2" class="domain.Item">
@@ -1434,6 +1592,10 @@
 			<list>
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/PDP/en-INTL-PDP0-Surface-Pro4-SU3-00001-P1.jpg</value>
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/en-INTL-L-Surface-Pro4-SU3-00001-RM3-mnco.jpg</value>
+			</list>
+		</property>
+		<property name="attributesDescription">
+			<list>
 			</list>
 		</property>
 	</bean>
@@ -1446,12 +1608,20 @@
 				<value>http://laseptimaentrevista.com/wp-content/uploads/2014/09/pantalla-completa-iphone-5-blanca-lcd-digitalizador-home-cam-8764-MLM20007595312_112013-O.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item4" class="domain.Item">
 		<property name="name" value="Tablet Android"/>
 		<property name="description" value="Cualquier me vale si se pueden ver vídeo de YouTube en 1080p."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1466,12 +1636,20 @@
 				<value>http://www.decoestilo.com/wp-content/uploads/2013/09/camas_invitados_3.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item6" class="domain.Item">
 		<property name="name" value="Litera"/>
 		<property name="description" value="Ahora con los niños necesito una litera, con protector para la cama de arriba a ser posible."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1484,12 +1662,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item8" class="domain.Item">
 		<property name="name" value="Seat León"/>
 		<property name="description" value="A ser posible negro, pago la diferencia en efectivo en el momento del intercambio."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1502,12 +1688,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item10" class="domain.Item">
 		<property name="name" value="VENDO GATOS"/>
 		<property name="description" value="Rapido! Te he propuesto emparejamiento para que lo veas!  Antes de que me pillen los Auditores!!"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1520,12 +1714,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item12" class="domain.Item">
 		<property name="name" value="Any laptop bought in 2015"/>
 		<property name="description" value="Any laptop bought in 2015 is fine for me."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1539,6 +1741,10 @@
 				<value>http://imagenes.pccomponentes.com/hp_g62_b67es_p6100_4gb_500gb_ati_hd5470_15_6__1.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item14" class="domain.Item">
@@ -1550,12 +1756,20 @@
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/en-INTL-L-Surface-Pro4-SU3-00001-RM3-mnco.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item15" class="domain.Item">
 		<property name="name" value="PC HP"/>
 		<property name="description" value="Portátil marca HP"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1568,12 +1782,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item17" class="domain.Item">
 		<property name="name" value="Portátil HP"/>
 		<property name="description" value="Portátil marca HP"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1586,12 +1808,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item19" class="domain.Item">
 		<property name="name" value="iPhone"/>
 		<property name="description" value="Quiero un iPhone"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1604,12 +1834,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item21" class="domain.Item">
 		<property name="name" value="Guitarra"/>
 		<property name="description" value="Guitarra eléctrica"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1622,12 +1860,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item23" class="domain.Item">
 		<property name="name" value="Guitarra"/>
 		<property name="description" value="Guitarra eléctrica bastante buena"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1640,6 +1886,10 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item25" class="domain.Item">
@@ -1649,12 +1899,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item26" class="domain.Item">
 		<property name="name" value="Xbox One"/>
 		<property name="description" value="Consola en buenas condiciones"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
