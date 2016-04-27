@@ -61,7 +61,7 @@ public class Item extends DomainEntity{
 	public Collection<AttributeDescription> getAttributesDescription() {
 		return attributesDescription;
 	}
-	public void setAttributeDescription(Collection<AttributeDescription> attributesDescription) {
+	public void setAttributesDescription(Collection<AttributeDescription> attributesDescription) {
 		this.attributesDescription = attributesDescription;
 	}
 	
