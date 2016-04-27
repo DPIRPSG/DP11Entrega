@@ -58,19 +58,17 @@ public class AttributeService {
 		attributeRepository.save(attribute);
 	}
 	
-	/*public void delete(Attribute attribute) {
+	public void delete(Attribute attribute) {
 		Assert.notNull(attribute);
 		Assert.isTrue(attribute.getId() != 0);
 		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an admin can delete attributes");
 				
-		for(AttributeDescription a : attribute.getAttributesDescription()) {
-			a.getItem().removeAttributeDescription(a);
-			
+		for(AttributeDescription a : attribute.getAttributesDescription()) {			
 			attributeDescriptionService.delete(a);
 		}
 		
 		attributeRepository.delete(attribute);
-	}*/
+	}
 	
 	public Attribute findOne(int id) {
 		Attribute result;

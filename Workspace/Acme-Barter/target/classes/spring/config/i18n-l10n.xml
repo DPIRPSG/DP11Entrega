@@ -40,6 +40,7 @@
 		<value>/views/barter/messages</value>
 		<value>/views/item/messages</value>
 		<value>/views/match/messages</value>
+		<value>/views/attribute/messages</value>
 		
 		<value>/views/forms/messages</value>
 			
