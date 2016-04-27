@@ -65,7 +65,7 @@ public abstract class Actor extends DomainEntity{
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "actor")
-	@Size(min = 4)
+	@Size(min = 5)
 	public Collection<Folder> getMessageBoxes() {
 		return messageBoxes;
 	}
