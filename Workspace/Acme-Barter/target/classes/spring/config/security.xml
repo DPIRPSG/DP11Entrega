@@ -60,6 +60,7 @@
 		
 		<security:intercept-url pattern="/folder/actor/**" access="hasAnyRole('USER', 'ADMIN', 'AUDITOR')"/>
 		<security:intercept-url pattern="/message/actor/**" access="hasAnyRole('USER', 'ADMIN', 'AUDITOR')"/>
+		<security:intercept-url pattern="/autoreply/actor/**" access="hasAnyRole('USER', 'ADMIN', 'AUDITOR')"/>
 		
 	
 		<security:intercept-url pattern="/barter/list.do" access="permitAll" />

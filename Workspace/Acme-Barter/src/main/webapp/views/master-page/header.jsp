@@ -82,8 +82,12 @@
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
-			<li><a class="fNiv" href="folder/actor/list.do"><spring:message code="master.page.messages" /></a></li>
-		
+			<li><a class="fNiv" href="folder/actor/list.do"><spring:message code="master.page.messages" /></a>
+				<ul> 
+					<li class="arrow"></li>
+					<li><a href="autoreply/actor/list.do"><spring:message code="master.page.autoreply" /></a></li>
+				</ul>
+			</li>
 			<!-- <li><a href="j_spring_security_logout"><spring:message code="master.page.logout" />(<security:authentication property="principal.username" />)</a></li> -->
 			<li><a class="fNiv"><security:authentication property="principal.username" /></a>
 				<ul>
