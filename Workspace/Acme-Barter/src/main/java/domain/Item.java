@@ -53,16 +53,24 @@ public class Item extends DomainEntity{
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<AttributeDescription> attributeDescription;
+	private Collection<AttributeDescription> attributesDescription;
 
 	@Valid
 	@NotNull
 	@OneToMany(mappedBy="item")
-	public Collection<AttributeDescription> getAttributeDescription() {
-		return attributeDescription;
+	public Collection<AttributeDescription> getAttributesDescription() {
+		return attributesDescription;
 	}
-	public void setAttributeDescription(Collection<AttributeDescription> attributeDescription) {
-		this.attributeDescription = attributeDescription;
+	public void setAttributeDescription(Collection<AttributeDescription> attributesDescription) {
+		this.attributesDescription = attributesDescription;
+	}
+	
+	public void addAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.add(attributeDescription);
+	}
+
+	public void removeAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.remove(attributeDescription);
 	}
 	
 	
