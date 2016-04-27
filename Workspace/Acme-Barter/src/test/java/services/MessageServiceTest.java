@@ -95,7 +95,7 @@ public class MessageServiceTest extends AbstractTest {
 		}
 		message.setRecipients(recipients);
 		
-		sentMessage = messageService.firstSave(message);
+		sentMessage = messageService.firstSaveNormalSend(message);
 		
 		// Checks results
 		for(Folder f: user.getMessageBoxes()){
@@ -166,7 +166,7 @@ public class MessageServiceTest extends AbstractTest {
 //		}
 //		message.setRecipients(recipients);
 		
-		messageService.firstSave(message);
+		messageService.firstSaveNormalSend(message);
 		
 		// Checks results
 //		for(Folder f: user.getMessageBoxes()){
@@ -239,7 +239,7 @@ public class MessageServiceTest extends AbstractTest {
 		}
 		message.setRecipients(recipients);
 		
-		sentMessage = messageService.firstSave(message);
+		sentMessage = messageService.firstSaveNormalSend(message);
 		
 		// Checks results
 		for(Folder f: user.getMessageBoxes()){
