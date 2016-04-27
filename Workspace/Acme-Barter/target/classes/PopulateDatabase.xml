@@ -1425,6 +1425,10 @@
 				<value>http://imagenes.pccomponentes.com/hp_g62_b67es_p6100_4gb_500gb_ati_hd5470_15_6__1.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item2" class="domain.Item">
@@ -1434,6 +1438,10 @@
 			<list>
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/PDP/en-INTL-PDP0-Surface-Pro4-SU3-00001-P1.jpg</value>
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/en-INTL-L-Surface-Pro4-SU3-00001-RM3-mnco.jpg</value>
+			</list>
+		</property>
+		<property name="attributesDescription">
+			<list>
 			</list>
 		</property>
 	</bean>
@@ -1446,12 +1454,20 @@
 				<value>http://laseptimaentrevista.com/wp-content/uploads/2014/09/pantalla-completa-iphone-5-blanca-lcd-digitalizador-home-cam-8764-MLM20007595312_112013-O.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item4" class="domain.Item">
 		<property name="name" value="Tablet Android"/>
 		<property name="description" value="Cualquier me vale si se pueden ver vídeo de YouTube en 1080p."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1466,12 +1482,20 @@
 				<value>http://www.decoestilo.com/wp-content/uploads/2013/09/camas_invitados_3.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item6" class="domain.Item">
 		<property name="name" value="Litera"/>
 		<property name="description" value="Ahora con los niños necesito una litera, con protector para la cama de arriba a ser posible."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1484,12 +1508,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item8" class="domain.Item">
 		<property name="name" value="Seat León"/>
 		<property name="description" value="A ser posible negro, pago la diferencia en efectivo en el momento del intercambio."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1502,12 +1534,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item10" class="domain.Item">
 		<property name="name" value="VENDO GATOS"/>
 		<property name="description" value="Rapido! Te he propuesto emparejamiento para que lo veas!  Antes de que me pillen los Auditores!!"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1520,12 +1560,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item12" class="domain.Item">
 		<property name="name" value="Any laptop bought in 2015"/>
 		<property name="description" value="Any laptop bought in 2015 is fine for me."/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1539,6 +1587,10 @@
 				<value>http://imagenes.pccomponentes.com/hp_g62_b67es_p6100_4gb_500gb_ati_hd5470_15_6__1.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item14" class="domain.Item">
@@ -1550,12 +1602,20 @@
 				<value>http://dri1.img.digitalrivercontent.net/Storefront/Company/msintl/images/English/en-INTL-Surface-Pro4-SU3-00001/en-INTL-L-Surface-Pro4-SU3-00001-RM3-mnco.jpg</value>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item15" class="domain.Item">
 		<property name="name" value="PC HP"/>
 		<property name="description" value="Portátil marca HP"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1568,12 +1628,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item17" class="domain.Item">
 		<property name="name" value="Portátil HP"/>
 		<property name="description" value="Portátil marca HP"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1586,12 +1654,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item19" class="domain.Item">
 		<property name="name" value="iPhone"/>
 		<property name="description" value="Quiero un iPhone"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1604,12 +1680,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item21" class="domain.Item">
 		<property name="name" value="Guitarra"/>
 		<property name="description" value="Guitarra eléctrica"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1622,12 +1706,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item23" class="domain.Item">
 		<property name="name" value="Guitarra"/>
 		<property name="description" value="Guitarra eléctrica bastante buena"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
@@ -1640,6 +1732,10 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item25" class="domain.Item">
@@ -1649,12 +1745,20 @@
 			<list>
 			</list>
 		</property>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="item26" class="domain.Item">
 		<property name="name" value="Xbox One"/>
 		<property name="description" value="Consola en buenas condiciones"/>
 		<property name="pictures">
+			<list>
+			</list>
+		</property>
+		<property name="attributesDescription">
 			<list>
 			</list>
 		</property>
