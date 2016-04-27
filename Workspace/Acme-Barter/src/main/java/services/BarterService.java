@@ -267,17 +267,6 @@ public class BarterService {
 		return result;
 	}
 	
-	private int countRelateBarter(Barter barterOrigin, Barter barterToCount){
-		int res = 0;
-		
-		for(Barter a:barterOrigin.getRelatedBarter()){
-			if(a.equals(barterToCount))
-				res++;
-		}
-		
-		return res;
-	}
-	
 	public Double ratioBarterNotRelatedToAnyOtherBarter(){
 		Double result;
 		Collection<Barter> allBarter = new HashSet<>();
