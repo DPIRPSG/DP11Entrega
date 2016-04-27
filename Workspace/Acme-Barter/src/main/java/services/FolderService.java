@@ -238,6 +238,7 @@ public class FolderService {
 		names.add("InBox");
 		names.add("OutBox");
 		names.add("TrashBox");
+		names.add("SpamBox");
 		names.add("Auto-reply box");
 				
 		
