@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 import domain.Attribute;
 import domain.AttributeDescription;
+import domain.Barter;
 import domain.Item;
 
 import repositories.AttributeDescriptionRepository;
@@ -28,10 +29,16 @@ public class AttributeDescriptionService {
 	private ActorService actorService;
 	
 	@Autowired
+	private UserService userService;
+	
+	@Autowired
 	private ItemService itemService;
 	
 	@Autowired
 	private AttributeService attributeService;
+	
+	@Autowired
+	private BarterService barterService;
 	
 	// Constructors -----------------------------------------------------------
 
@@ -41,12 +48,21 @@ public class AttributeDescriptionService {
 
 	// Simple CRUD methods ----------------------------------------------------
 	
-	public AttributeDescription create() {
+	public AttributeDescription create(int itemId) {
 		Assert.isTrue(actorService.checkAuthority("USER"), "Only an user can create an Attribute's description.");
 		
 		AttributeDescription result;
+		Item item;
+		Barter barter;
+		
+		barter = barterService.findOneByItemId(itemId);
+		Assert.isTrue(barter.getUser().getId() == userService.findByPrincipal().getId());
+		
+		item = itemService.findOne(itemId);
 		
 		result = new AttributeDescription();
+		
+		result.setItem(item);
 		
 		return result;
 	}
@@ -119,5 +135,13 @@ public class AttributeDescriptionService {
 
 	public void flush() {
 		attributeDescriptionRepository.flush();
+	}
+
+	public Collection<AttributeDescription> findAllByItemId(int itemId) {
+		Collection<AttributeDescription> result;
+		
+		result = attributeDescriptionRepository.findAllByItemId(itemId);
+				
+		return result;
 	}
 }

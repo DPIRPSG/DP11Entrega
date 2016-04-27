@@ -26,4 +26,9 @@
 	
 	</table>
 	</div>
+	<div>
+	<b><a href="attribute-description/list.do?itemId=${item.id}"> <spring:message
+				code="attributeDescription.create" />
+	</a></b>
+</div>
 	<!-- Action links -->
