@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import domain.Attribute;
 import domain.AttributeDescription;
+import domain.Item;
 import repositories.AttributeRepository;
 
 @Service
@@ -90,5 +91,18 @@ public class AttributeService {
 
 	public void flush() {
 		attributeRepository.flush();
+	}
+
+	public Collection<Attribute> findAllNotUsed(Item item) {
+		Collection<Attribute> result;
+		Collection<AttributeDescription> attributesDescription;
+		
+		result = attributeRepository.findAll();
+		attributesDescription = item.getAttributesDescription();
+		for(AttributeDescription a : attributesDescription) {
+			result.remove(a.getAttribute());
+		}
+		
+		return result;
 	}
 }

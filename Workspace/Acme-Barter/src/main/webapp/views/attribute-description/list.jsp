@@ -20,21 +20,30 @@
 
 	<!-- Attributes -->
 	<security:authorize access="hasRole('USER')">
-		<display:column>
-			<div>
-				<b><a
-					href="attribute-description/user/edit.do?attributeDescriptionId=${row_AttributeDescription.id}">
-						<spring:message code="attributeDescription.edit" />
-				</a></b>
-			</div>
-		</display:column>
+		<jstl:if test="${barter.user.id == userId}">
+			<display:column>
+				<div>
+					<b><a
+						href="attribute-description/user/edit.do?attributeDescriptionId=${row_AttributeDescription.id}">
+							<spring:message code="attributeDescription.edit" />
+					</a></b>
+				</div>
+			</display:column>
+		</jstl:if>
 	</security:authorize>
+
+	<spring:message code="attributeDescription.attribute" var="attributeHeader" />
+	<display:column title="${attributeHeader}"
+		sortable="true">
+		<jstl:out value="${row_AttributeDescription.attribute.name}"/>
+	</display:column>
 
 	<spring:message code="attributeDescription.value" var="valueHeader" />
 	<display:column title="${valueHeader}"
 		sortable="true">
 		<jstl:out value="${row_AttributeDescription.value}"/>
 	</display:column>
+	
 </display:table>
 
 <br/>
@@ -42,9 +51,12 @@
 
 <!-- Action links -->
 <security:authorize access="hasRole('USER')">
-	<div>
-		<b><a href="attribute-description/user/create.do?itemId=${itemId}">
-				<spring:message code="attributeDescription.create" />
-		</a></b>
-	</div>
+	<jstl:if test="${barter.user.id == userId}">
+		<div>
+			<b><a
+				href="attribute-description/user/create.do?itemId=${itemId}"> <spring:message
+						code="attributeDescription.create" />
+			</a></b>
+		</div>
+	</jstl:if>
 </security:authorize>

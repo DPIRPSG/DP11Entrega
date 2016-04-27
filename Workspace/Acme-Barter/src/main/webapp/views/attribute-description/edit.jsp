@@ -33,7 +33,7 @@
 		<acme:submit_confirm name="delete" code="attributeDescription.delete" codeConfirm="attributeDescription.confirm.delete" />
 		&nbsp;
 	</jstl:if>
-	<acme:cancel url="attribute-description/user/list.do" code="attributeDescription.cancel"/>
+	<acme:cancel url="attribute-description/user/list.do?itemId=${itemId}" code="attributeDescription.cancel"/>
 	<br />
 
 </form:form>

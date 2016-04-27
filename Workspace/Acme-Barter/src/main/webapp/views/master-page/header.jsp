@@ -39,6 +39,7 @@
 					<li><a href="match/user/display.do"><spring:message code="barter.novedades" /></a></li>
 				</ul>
 			</li>
+			<li><a class="fNiv" href="item/user/list.do"><spring:message code="master.page.items" /></a></li>
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.users" /></a></li>			
 			<li><a class="fNiv" href="user/user/followed.do"><spring:message code="master.page.followed" /></a></li>			
 			<li><a class="fNiv" href="user/user/followers.do"><spring:message code="master.page.followers" /></a></li>			

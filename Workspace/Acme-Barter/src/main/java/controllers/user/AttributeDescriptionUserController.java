@@ -25,9 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AttributeDescriptionService;
 import services.AttributeService;
+import services.BarterService;
+import services.UserService;
 import controllers.AbstractController;
 import domain.Attribute;
 import domain.AttributeDescription;
+import domain.Barter;
 
 @Controller
 @RequestMapping("/attribute-description/user")
@@ -41,6 +44,12 @@ public class AttributeDescriptionUserController extends AbstractController {
 	@Autowired
 	private AttributeService attributeService;
 	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private BarterService barterService;
+	
 	// Constructors -----------------------------------------------------------
 	
 	public AttributeDescriptionUserController() {
@@ -53,12 +62,19 @@ public class AttributeDescriptionUserController extends AbstractController {
 	public ModelAndView list(@RequestParam int itemId) {
 		ModelAndView result;
 		Collection<AttributeDescription> attributesDescription;
+		int userId;
+		Barter barter;
+		
+		userId = userService.findByPrincipal().getId();
+		barter = barterService.findOneByItemId(itemId);
 
 		attributesDescription = attributeDescriptionService.findAllByItemId(itemId);
 		result = new ModelAndView("attribute-description/list");
 		result.addObject("requestURI", "attribute-description/user/list.do");
 		result.addObject("attributesDescription", attributesDescription);
 		result.addObject("itemId", itemId);
+		result.addObject("userId", userId);
+		result.addObject("barter", barter);
 
 		return result;
 	}
@@ -138,13 +154,16 @@ public class AttributeDescriptionUserController extends AbstractController {
 	protected ModelAndView createEditModelAndView(AttributeDescription attributeDescription, String message) {
 		ModelAndView result;
 		Collection<Attribute> attributes;
+		int itemId;
 		
-		attributes = attributeService.findAll();
-		
+		attributes = attributeService.findAllNotUsed(attributeDescription.getItem());
+		itemId = attributeDescription.getItem().getId();
+				
 		result = new ModelAndView("attribute-description/edit");
 		result.addObject("attributeDescription", attributeDescription);
 		result.addObject("attributes", attributes);
 		result.addObject("message", message);
+		result.addObject("itemId", itemId);
 
 		return result;
 	}

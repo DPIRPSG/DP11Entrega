@@ -24,6 +24,9 @@ public class ItemService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private UserService userService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -59,7 +62,7 @@ public class ItemService {
 	public Item save(Item item){
 		
 		Assert.notNull(item);
-		Assert.isTrue(actorService.checkAuthority("USER"), "Only a user can save an item");
+		Assert.isTrue(actorService.checkAuthority("USER") || actorService.checkAuthority("ADMIN"), "Only an user or an admin can save an item");
 		Item result;
 		
 		result = itemRepository.save(item);
@@ -86,5 +89,22 @@ public class ItemService {
 
 	public void flush() {
 		itemRepository.flush();
+	}
+
+	public Collection<Item> findAllByUser() {
+		Collection<Item> result, offereds, requesteds;
+		int userId;
+		
+		userId = userService.findByPrincipal().getId();
+		
+		result = new ArrayList<Item>();
+		
+		offereds = itemRepository.findAllOfferedByUser(userId);
+		requesteds = itemRepository.findAllRequestedByUser(userId);
+		
+		result.addAll(offereds);
+		result.addAll(requesteds);
+		
+		return result;
 	}
 }
