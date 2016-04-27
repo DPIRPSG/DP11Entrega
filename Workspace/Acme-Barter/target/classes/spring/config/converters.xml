@@ -38,6 +38,9 @@
 		
 		<bean class="converters.AuditorToStringConverter" />
 		<bean class="converters.StringToAuditorConverter" />
+
+		<bean class="converters.AutoreplyToStringConverter" />
+		<bean class="converters.StringToAutoreplyConverter" />
 		
 		<bean class="converters.BarterToStringConverter" />
 		<bean class="converters.StringToBarterConverter" />
