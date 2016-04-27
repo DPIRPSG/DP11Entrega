@@ -32,16 +32,16 @@ public class Attribute extends DomainEntity{
 	
 	
 	// Relationships ----------------------------------------------------------
-	private Collection<AttributeDescription> attributeDescription;
+	private Collection<AttributeDescription> attributesDescription;
 
 	@Valid
 	@NotNull
 	@OneToMany(mappedBy="attribute")
-	public Collection<AttributeDescription> getAttributeDescription() {
-		return attributeDescription;
+	public Collection<AttributeDescription> getAttributesDescription() {
+		return attributesDescription;
 	}
-	public void setAttributeDescription(Collection<AttributeDescription> attributeDescription) {
-		this.attributeDescription = attributeDescription;
+	public void setAttributesDescription(Collection<AttributeDescription> attributesDescription) {
+		this.attributesDescription = attributesDescription;
 	}
 		
 }
