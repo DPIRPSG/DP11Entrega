@@ -109,7 +109,7 @@ public class MessageService {
 		
 		Assert.isTrue(sendId == actId);
 				
-		result = this.firstSave(message);
+		result = this.firstSave(message, false);
 		
 		return result;
 	}
@@ -117,13 +117,13 @@ public class MessageService {
 	/**
 	 * Guarda la primera vez
 	 */
-	private Message firstSave(Message message){
+	private Message firstSave(Message message, boolean isAutoreply){
 		Assert.notNull(message);
 		
 		Message result;
 		
 		result = this.save(message);
-		this.addMessageToFolderFirst(result);
+		this.addMessageToFolderFirst(result, isAutoreply);
 		
 		return result;
 	}
@@ -131,33 +131,35 @@ public class MessageService {
 	/**
 	 * Añade a las respectivas carpetas la primera vez que un mensaje es creado
 	 */
-	private void addMessageToFolderFirst(Message message){
-//		boolean isSpam;
-		
-//		isSpam = spamTermService.checkSpamTerm(message.getBody() + message.getSubject());
+	private void addMessageToFolderFirst(Message message, boolean isAutoreply){
+
 		for (Folder f:message.getSender().getMessageBoxes()){
-			if (f.getName().equals("OutBox") && f.getIsSystem()){
+			if (f.getIsSystem() && f.getName().equals("OutBox") && !isAutoreply){
 				folderService.addMessage(f, message);
+			}else if(f.getIsSystem() && f.getName().equals("Auto-reply box") && isAutoreply){
+				folderService.addMessage(f, message);				
 			}
 		}
 		
 		for (Actor recipient: message.getRecipients()){
-			boolean autoreply;
+			this.isResponseByAutoreply(message, recipient);
 			
-			autoreply = this.isResponseByAutoreply(message, recipient);
 			for (Folder f:recipient.getMessageBoxes()){
-				boolean toInBox, toAutoreply;
+				boolean toInBox; //, toAutoreply;
 				
-				toInBox = f.getName().equals("InBox") && !autoreply;
-				toAutoreply = f.getName().equals("Autoreply") && autoreply;
+				toInBox = f.getName().equals("InBox"); // && !autoreply;
+				// toAutoreply = f.getName().equals("Auto-reply box") && autoreply;
 				
-				if ((toInBox|| toAutoreply)
+				if (toInBox
+						//(toInBox|| toAutoreply)
 						&& f.getIsSystem()){
 					folderService.addMessage(f, message);
 				}
 			}
 		}
 	}
+	
+	
 	
 	/**
 	 * Devuelve true en caso de que el mensaje tenga una respuesta automática
@@ -179,7 +181,7 @@ public class MessageService {
 				}
 			}
 			if(tempResponse){
-				sendResponseAutoreply(actActorToSend, m.getSender(), auto.getText());
+				sendResponseAutoreply(actActorToSend, m.getSender(), m.getSubject(), auto.getText());
 				isResponse = true;
 				break;
 			}
@@ -189,7 +191,7 @@ public class MessageService {
 		return isResponse;
 	}
 	
-	private void sendResponseAutoreply(Actor newSender, Actor newReceiver, String textToSend){
+	private void sendResponseAutoreply(Actor newSender, Actor newReceiver, String oldSubject, String textToSend){
 		Message toSend;
 		Collection<Actor> recipients;
 		
@@ -200,9 +202,9 @@ public class MessageService {
 		toSend.setSender(newSender);
 		toSend.setRecipients(recipients);
 		toSend.setBody(textToSend);
-		toSend.setSubject("AUTO-REPLY -- ");
+		toSend.setSubject("AUTO-REPLY -- " + oldSubject);
 		
-		this.firstSave(toSend);
+		this.firstSave(toSend, true);
 	}
 	
 	
