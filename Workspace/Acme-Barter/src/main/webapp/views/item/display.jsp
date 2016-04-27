@@ -27,8 +27,15 @@
 	</table>
 	</div>
 	<div>
-	<b><a href="attribute-description/list.do?itemId=${item.id}"> <spring:message
-				code="attributeDescription.create" />
+	<security:authorize access="hasRole('USER')">
+	<b><a href="attribute-description/user/list.do?itemId=${item.id}"> <spring:message
+				code="item.info" />
 	</a></b>
+	</security:authorize>
+	<security:authorize access="!hasRole('USER')">
+	<b><a href="attribute-description/list.do?itemId=${item.id}"> <spring:message
+				code="item.info" />
+	</a></b>
+	</security:authorize>
 </div>
 	<!-- Action links -->

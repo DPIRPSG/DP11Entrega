@@ -72,6 +72,10 @@ public class AttributeDescriptionService {
 		Assert.notNull(attributeDescription);
 		Item item;
 		Attribute attribute;
+		Barter barter;
+		
+		barter = barterService.findOneByItemId(attributeDescription.getItem().getId());
+		Assert.isTrue(barter.getUser().getId() == userService.findByPrincipal().getId());
 		
 		if(attributeDescription.getId() == 0) {
 			attributeDescription = attributeDescriptionRepository.save(attributeDescription);

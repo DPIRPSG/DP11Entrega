@@ -58,6 +58,7 @@ public class AttributeDescriptionUserController extends AbstractController {
 		result = new ModelAndView("attribute-description/list");
 		result.addObject("requestURI", "attribute-description/user/list.do");
 		result.addObject("attributesDescription", attributesDescription);
+		result.addObject("itemId", itemId);
 
 		return result;
 	}
@@ -98,7 +99,7 @@ public class AttributeDescriptionUserController extends AbstractController {
 		} else {
 			try {
 				attributeDescriptionService.save(attributeDescription);				
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:list.do?itemId="+attributeDescription.getItem().getId());
 			} catch (Throwable oops) {
 				result = createEditModelAndView(attributeDescription, "attributeDescription.commit.error");				
 			}
@@ -110,10 +111,13 @@ public class AttributeDescriptionUserController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(AttributeDescription attributeDescription, BindingResult binding) {
 		ModelAndView result;
+		int itemId;
+		
+		itemId = attributeDescription.getItem().getId();
 
 		try {			
 			attributeDescriptionService.delete(attributeDescription);
-			result = new ModelAndView("redirect:list.do");						
+			result = new ModelAndView("redirect:list.do?itemId="+itemId);						
 		} catch (Throwable oops) {
 			result = createEditModelAndView(attributeDescription, "attributeDescription.commit.error");
 		}

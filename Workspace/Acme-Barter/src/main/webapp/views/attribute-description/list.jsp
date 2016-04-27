@@ -19,13 +19,16 @@
 	<!-- Action links -->
 
 	<!-- Attributes -->
-	<display:column>
-		<div>
-			<b><a href="attribute-description/user/edit.do?attributeDescriptionId=${row_AttributeDescription.id}"> <spring:message
-						code="attributeDescription.edit" />
-			</a></b>
-		</div>
-	</display:column>
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<div>
+				<b><a
+					href="attribute-description/user/edit.do?attributeDescriptionId=${row_AttributeDescription.id}">
+						<spring:message code="attributeDescription.edit" />
+				</a></b>
+			</div>
+		</display:column>
+	</security:authorize>
 
 	<spring:message code="attributeDescription.value" var="valueHeader" />
 	<display:column title="${valueHeader}"
@@ -38,9 +41,10 @@
 <br/>
 
 <!-- Action links -->
-
-<div>
-	<b><a href="attribute-description/user/create.do"> <spring:message
-				code="attributeDescription.create" />
-	</a></b>
-</div>
+<security:authorize access="hasRole('USER')">
+	<div>
+		<b><a href="attribute-description/user/create.do?itemId=${itemId}">
+				<spring:message code="attributeDescription.create" />
+		</a></b>
+	</div>
+</security:authorize>
