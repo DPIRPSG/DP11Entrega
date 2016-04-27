@@ -50,6 +50,7 @@
 					<li class="arrow"></li>
 					<li><a href="match/administrator/list.do"><spring:message code="master.page.match" /></a></li>
 					<li><a href="barter/administrator/list.do"><spring:message code="master.page.barter" /></a></li>
+					<li><a href="attribute/administrator/list.do"><spring:message code="master.page.attribute" /></a></li>
 					<li><a href="legal-text/administrator/list.do"><spring:message code="master.page.list.legalTexts" /></a></li>
 					<li><a href="auditor/administrator/register.do"><spring:message code="master.page.register.auditor" /></a></li>
 				</ul>

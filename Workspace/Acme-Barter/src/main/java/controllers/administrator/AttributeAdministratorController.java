@@ -24,11 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AttributeService;
-import services.LegalTextService;
-
 import controllers.AbstractController;
 import domain.Attribute;
-import domain.LegalText;
 
 @Controller
 @RequestMapping("/attribute/administrator")
