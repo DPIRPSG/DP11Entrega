@@ -32,17 +32,7 @@
 		<div class="error"><jstl:out value="${notEmpty }" /></div>
 	</jstl:if>	
 	<br />
-	
-	<div>
-		<form:label path="priority">
-			<spring:message code="message.priority" />: &nbsp;
-		</form:label>	
-		<form:input path="priority" type="number"/>	
-	</div>
-	<jstl:if test="${!correctPriority }">
-		<div class="error"><spring:message code="message.priority.error" /></div>
-	</jstl:if>
-	
+
 	<form:label path="subject">
 		<spring:message code="message.subject" />:
 	</form:label>
