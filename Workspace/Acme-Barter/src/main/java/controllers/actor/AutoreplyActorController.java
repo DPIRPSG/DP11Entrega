@@ -18,68 +18,67 @@ import domain.Autoreply;
 
 @Controller
 @RequestMapping(value = "/autoreply/actor")
-public class AutoreplyActorController extends AbstractController{
+public class AutoreplyActorController extends AbstractController {
 
-	//Services ----------------------------------------------------------
+	// Services ----------------------------------------------------------
 
 	@Autowired
 	private AutoreplyService autoreplyService;
-	
-	//Constructors ----------------------------------------------------------
-	
-	public AutoreplyActorController(){
+
+	// Constructors ----------------------------------------------------------
+
+	public AutoreplyActorController() {
 		super();
 	}
 
-	//Listing ----------------------------------------------------------
+	// Listing ----------------------------------------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(){
-        ModelAndView result;
-        Collection<Autoreply> autoreplies;
-        
-        autoreplies = autoreplyService.findByPrincipal();
-        
-        result = new ModelAndView("autoreply/list");
-        result.addObject("autoreplies", autoreplies);
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Autoreply> autoreplies;
+
+		autoreplies = autoreplyService.findByPrincipal();
+
+		result = new ModelAndView("autoreply/list");
+		result.addObject("autoreplies", autoreplies);
 		result.addObject("requestURI", "autoreply/actor/list.do");
-        
-        return result;
+
+		return result;
 	}
-		
+
 	// Creation ----------------------------------------------------------
-	
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(){
+	public ModelAndView create() {
 		ModelAndView result;
 		Autoreply autoreply;
-		
+
 		autoreply = autoreplyService.create();
-			
+
 		result = createEditModelAndView(autoreply);
-		
+
 		return result;
 	}
 
 	// Edition ----------------------------------------------------------
 
-	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam(required = true)int autoreplyId){
+	public ModelAndView edit(@RequestParam(required = true) int autoreplyId) {
 		ModelAndView result;
 		Autoreply autoreply;
-		
+
 		autoreply = autoreplyService.findToEdit(autoreplyId);
-			
+
 		result = createEditModelAndView(autoreply);
-		
+
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Autoreply autoreply, BindingResult binding){
+	public ModelAndView save(@Valid Autoreply autoreply, BindingResult binding) {
 		ModelAndView result;
-	
+
 		if (binding.hasErrors()) {
 			result = createEditModelAndView(autoreply);
 		} else {
@@ -87,43 +86,46 @@ public class AutoreplyActorController extends AbstractController{
 				autoreplyService.saveFromEdit(autoreply);
 				result = new ModelAndView("redirect:/autoreply/actor/list.do");
 			} catch (Throwable oops) {
-				result = createEditModelAndView(autoreply, "autoreply.commit.error");				
+				result = createEditModelAndView(autoreply,
+						"autoreply.commit.error");
 			}
 		}
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@Valid Autoreply autoreply, BindingResult binding){
+	public ModelAndView delete(@Valid Autoreply autoreply, BindingResult binding) {
 		ModelAndView result;
-	
+
 		try {
 			autoreplyService.deleteFromEdit(autoreply);
 			result = new ModelAndView("redirect:/autoreply/actor/list.do");
 		} catch (Throwable oops) {
-			result = createEditModelAndView(autoreply, "autoreply.commit.error");				
+			result = createEditModelAndView(autoreply, "autoreply.commit.error");
 		}
 		return result;
 	}
-	
-	// Ancillary Methods ----------------------------------------------------------
-	
+
+	// Ancillary Methods
+	// ----------------------------------------------------------
+
 	protected ModelAndView createEditModelAndView(Autoreply input) {
 		ModelAndView result;
-		
+
 		result = createEditModelAndView(input, null);
-		
+
 		return result;
 	}
-	
-	protected ModelAndView createEditModelAndView(Autoreply input, String message){
+
+	protected ModelAndView createEditModelAndView(Autoreply input,
+			String message) {
 		ModelAndView result;
-		
+
 		result = new ModelAndView("autoreply/edit");
 		result.addObject("autoreply", input);
 		result.addObject("message", message);
-		
+
 		return result;
 	}
-	
+
 }

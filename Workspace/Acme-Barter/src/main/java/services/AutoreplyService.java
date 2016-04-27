@@ -85,6 +85,7 @@ public class AutoreplyService {
 	
 	public Autoreply saveFromEdit(Autoreply autoreply){
 		Assert.notNull(autoreply);
+		Assert.isTrue(actorService.checkAuthority("USER"), "autoreply.notUserAuthority");
 		
 		Autoreply auto, result;
 		
