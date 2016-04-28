@@ -95,6 +95,17 @@
 		</jstl:if>
 	</display:column>
 	
+	<security:authorize access="hasRole('ADMIN')">
+		<jstl:if test="${userIdListing != null}">
+			<spring:message code="barter.close" var="closeHeader" />
+			<display:column title="${closeHeader}" sortable="true">
+				<jstl:if test="${row_Barter.closed == false}">
+						<a href="barter/administrator/close.do?barterId=${row_Barter.id}&userId=${userIdListing}"> <spring:message code="barter.close"/></a>
+				</jstl:if>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
+	
 	<spring:message code="barter.relatedBarter" var="relatedBarterHeader" />
 	<display:column title="${relatedBarterHeader}" sortable="false">
 		<a href="barter/list2.do?barterId=${row_Barter.id}"> <spring:message

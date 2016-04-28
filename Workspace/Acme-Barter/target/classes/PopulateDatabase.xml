@@ -186,6 +186,18 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccount15" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
 	
 	<!-- Other domain beans come here -->
 	
@@ -208,6 +220,30 @@
 		<property name="sent">
 			<list>
 				<ref bean="message1"/>
+			</list>
+		</property>
+		<property name="received">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Carlos Alberto"/>
+		<property name="surname" value="Gil"/>
+		<property name="phone" value="682541397"/>
+		<property name="userAccount" ref="userAccount15"/>
+		<property name="messageBoxes">
+			<list>
+				<ref bean="folder73"/>
+				<ref bean="folder74"/>
+				<ref bean="folder75"/>
+				<ref bean="folder76"/>
+				<ref bean="folder77"/>
+			</list>
+		</property>
+		<property name="sent">
+			<list>
 			</list>
 		</property>
 		<property name="received">
@@ -1509,6 +1545,56 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="folder73" class="domain.Folder">
+		<property name="name" value="InBox"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder74" class="domain.Folder">
+		<property name="name" value="OutBox"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder75" class="domain.Folder">
+		<property name="name" value="TrashBox"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder76" class="domain.Folder">
+		<property name="name" value="SpamBox"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="folder77" class="domain.Folder">
+		<property name="name" value="Auto-reply box"/>
+		<property name="isSystem" value="true"/>
+		<property name="actor" ref="administrator2"/>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- SocialIdentity -->
@@ -1993,6 +2079,7 @@
 			</list>
 		</property>
 		<property name="closed" value="true"/>
+		<property name="administrator" ref="administrator1"/>
 	</bean>
 	
 	<bean id="barter3" class="domain.Barter">
@@ -2088,6 +2175,7 @@
 			</list>
 		</property>
 		<property name="closed" value="true"/>
+		<property name="administrator" ref="administrator1"/>
 	</bean>
 	
 	<bean id="barter7" class="domain.Barter">
@@ -2178,6 +2266,7 @@
 			</list>
 		</property>
 		<property name="closed" value="true"/>
+		<property name="administrator" ref="administrator2"/>
 	</bean>
 	
 	<bean id="barter11" class="domain.Barter">
