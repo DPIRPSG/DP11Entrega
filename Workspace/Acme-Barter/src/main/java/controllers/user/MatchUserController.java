@@ -150,7 +150,6 @@ public class MatchUserController extends AbstractController {
 		matchService.cancel(match);
 		
 		result = this.list();
-//		result.addObject("match", match); // Devolver mensaje de error/confirmación
 
 		return result;
 	}
@@ -167,7 +166,6 @@ public class MatchUserController extends AbstractController {
 		matchService.sign(match);
 		
 		result = this.list();
-//		result.addObject("match", match); // Devolver mensaje de error/confirmación
 
 		return result;
 	}

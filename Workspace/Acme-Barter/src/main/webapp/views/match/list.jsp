@@ -28,67 +28,67 @@
 	<display:table pagesize="5" class="displaytag" keepStatus="false"
 		name="matches" requestURI="${requestURI}" id="row_Match">
 		
-		<!-- Attributes -->
-		<spring:message code="match.creationMoment" var="creationMomentHeader" />
-		<acme:displayColumn title="${creationMomentHeader}" sorteable="true" value="${row_Match.creationMoment}" format="{0,date,yyyy/MM/dd}"/>
+	<!-- Attributes -->
+	<spring:message code="match.creationMoment" var="creationMomentHeader" />
+	<acme:displayColumn title="${creationMomentHeader}" sorteable="true" value="${row_Match.creationMoment}" format="{0,date,yyyy/MM/dd}"/>
+	
+	<spring:message code="match.offerSignsDate" var="offerSignsDateHeader" />
+	<acme:displayColumn title="${offerSignsDateHeader}" sorteable="true" value="${row_Match.offerSignsDate}" format="{0,date,yyyy/MM/dd}"/>
+	
+	<spring:message code="match.requestSignsDate" var="requestSignsDateHeader" />
+	<acme:displayColumn title="${requestSignsDateHeader}" sorteable="true" value="${row_Match.requestSignsDate}" format="{0,date,yyyy/MM/dd}"/>
+	
+	<spring:message code="match.legalText" var="legalTextHeader" />
+	<acme:displayColumn title="${legalTextHeader}" sorteable="true" value="${row_Match.legalText.text}"/>
+	
+	<spring:message code="match.creatorBarter" var="creatorBarterHeader" />
+	<acme:displayColumn title="${creatorBarterHeader}" sorteable="true" value="${row_Match.creatorBarter.title}"/>
+	
+	<spring:message code="match.receiverBarter" var="receiverBarterHeader" />
+	<acme:displayColumn title="${receiverBarterHeader}" sorteable="true" value="${row_Match.receiverBarter.title}"/>
+	
+	<spring:message code="match.report" var="reportHeader" />
+	<acme:displayColumn title="${reportHeader}" sorteable="false" value="${row_Match.report}"/>
+	
+	<spring:message code="match.closed" var="closedHeader" />
+	<display:column title="${closedHeader}" sortable="true">
+		<jstl:if test="${row_Match.closed == true}">
+			<spring:message code="match.yes" />
+		</jstl:if>
+		<jstl:if test="${row_Match.closed == false}">
+			<spring:message code="match.no" />
+		</jstl:if>
+	</display:column>
+	
+	<security:authorize access="hasAnyRole('ADMIN', 'AUDITOR')">
+		<spring:message code="match.cancelled" var="cancelledHeader" />
+		<acme:displayColumn title="${cancelledHeader}" sorteable="true" value="${row_Match.cancelled}"/>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('USER')">
+		<!-- Action links -->
+		<spring:message code="match.cancel" var="cancelHeader" />
+		<display:column title="${cancelHeader}" sortable="true">
+		<jstl:if test="${row_Match.creatorBarter.user.id == userId || row_Match.receiverBarter.user.id == userId}">
+			<a href="match/user/cancel.do?matchId=${row_Match.id}"><spring:message code="match.cancel" /></a>
+		</jstl:if>
+		</display:column>
 		
-		<spring:message code="match.offerSignsDate" var="offerSignsDateHeader" />
-		<acme:displayColumn title="${offerSignsDateHeader}" sorteable="true" value="${row_Match.offerSignsDate}" format="{0,date,yyyy/MM/dd}"/>
-		
-		<spring:message code="match.requestSignsDate" var="requestSignsDateHeader" />
-		<acme:displayColumn title="${requestSignsDateHeader}" sorteable="true" value="${row_Match.requestSignsDate}" format="{0,date,yyyy/MM/dd}"/>
-		
-		<spring:message code="match.legalText" var="legalTextHeader" />
-		<acme:displayColumn title="${legalTextHeader}" sorteable="true" value="${row_Match.legalText.text}"/>
-		
-		<spring:message code="match.creatorBarter" var="creatorBarterHeader" />
-		<acme:displayColumn title="${creatorBarterHeader}" sorteable="true" value="${row_Match.creatorBarter.title}"/>
-		
-		<spring:message code="match.receiverBarter" var="receiverBarterHeader" />
-		<acme:displayColumn title="${receiverBarterHeader}" sorteable="true" value="${row_Match.receiverBarter.title}"/>
-		
-		<spring:message code="match.report" var="reportHeader" />
-		<acme:displayColumn title="${reportHeader}" sorteable="false" value="${row_Match.report}"/>
-		
-		<spring:message code="match.closed" var="closedHeader" />
-		<display:column title="${closedHeader}" sortable="true">
-			<jstl:if test="${row_Match.closed == true}">
-				<spring:message code="match.yes" />
-			</jstl:if>
-			<jstl:if test="${row_Match.closed == false}">
-				<spring:message code="match.no" />
+		<spring:message code="match.sign" var="signHeader" />
+		<display:column title="${signHeader}" sortable="true">
+			<jstl:if test="${row_Match.creatorBarter.user.id == userId && row_Match.offerSignsDate == null || row_Match.receiverBarter.user.id == userId && row_Match.requestSignsDate == null}">
+				<a href="match/user/sign.do?matchId=${row_Match.id}"><spring:message code="match.sign" /></a>
 			</jstl:if>
 		</display:column>
 		
-		<security:authorize access="hasAnyRole('ADMIN', 'AUDITOR')">
-			<spring:message code="match.cancelled" var="cancelledHeader" />
-			<acme:displayColumn title="${cancelledHeader}" sorteable="true" value="${row_Match.cancelled}"/>
-		</security:authorize>
+	</security:authorize>
 		
-		<security:authorize access="hasRole('USER')">
-			<!-- Action links -->
-			<spring:message code="match.cancel" var="cancelHeader" />
-			<display:column title="${cancelHeader}" sortable="true">
-			<jstl:if test="${row_Match.creatorBarter.user.id == userId || row_Match.receiverBarter.user.id == userId}">
-				<a href="match/user/cancel.do?matchId=${row_Match.id}"><spring:message code="match.cancel" /></a>
-			</jstl:if>
-			</display:column>
-			
-			<spring:message code="match.sign" var="signHeader" />
-			<display:column title="${signHeader}" sortable="true">
-				<jstl:if test="${row_Match.creatorBarter.user.id == userId && row_Match.offerSignsDate == null || row_Match.receiverBarter.user.id == userId && row_Match.requestSignsDate == null}">
-					<a href="match/user/sign.do?matchId=${row_Match.id}"><spring:message code="match.sign" /></a>
-				</jstl:if>
-			</display:column>
-			
-		</security:authorize>
-			
-		<spring:message code="match.complaint" var="complaintHeader" />
-		<display:column title="${complaintHeader}" sortable="false">
-			<a href="complaint/list.do?barterOrMatchId=${row_Match.id}"> <spring:message
-					code="match.complaint"/>
-			</a>
-		</display:column>
+	<spring:message code="match.complaint" var="complaintHeader" />
+	<display:column title="${complaintHeader}" sortable="false">
+		<a href="complaint/list.do?barterOrMatchId=${row_Match.id}"> <spring:message
+				code="match.complaint"/>
+		</a>
+	</display:column>
 
 	<security:authorize access="hasRole('AUDITOR')">
 		<spring:message code="match.edit" var="editHeader" />
@@ -109,15 +109,22 @@
 
 		</display:column>
 	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<spring:message code="match.close" var="closeHeader" />
+	<display:column title="${closeHeader}" sortable="true">
+		<jstl:if test="${row_Match.closed == false}">
+				<a href="match/administrator/close.do?matchId=${row_Match.id}&userId=${userIdListing}"> <spring:message code="match.close"/></a>
+		</jstl:if>
+		</display:column>
+	</security:authorize>
 
 </display:table>
-	
-	<security:authorize access="hasRole('USER')">
-		<a href="match/user/create.do"><spring:message code="match.create"/></a>
-	</security:authorize>
+<br>
+<security:authorize access="hasRole('USER')">
+	<a href="match/user/create.do"><spring:message code="match.create"/></a>
+</security:authorize>
 	
 <security:authorize access="hasRole('ADMIN')">
-
 	<a href="match/administrator/cancel.do"><spring:message code="match.cancelNotSigned"/></a>
-
 </security:authorize>
