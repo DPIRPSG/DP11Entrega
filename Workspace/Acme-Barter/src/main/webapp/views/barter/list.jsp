@@ -102,14 +102,12 @@
 		</a>
 	</display:column>
 	
-	<security:authorize access="hasRole('USER')">
-		<spring:message code="barter.complaint" var="complaintHeader" />
-		<display:column title="${complaintHeader}" sortable="false">
-			<a href="complaint/user/list.do?barterOrMatchId=${row_Barter.id}"> <spring:message
-					code="barter.complaint"/>
-			</a>
-		</display:column>
-	</security:authorize>
+	<spring:message code="barter.complaint" var="complaintHeader" />
+	<display:column title="${complaintHeader}" sortable="false">
+		<a href="complaint/list.do?barterOrMatchId=${row_Barter.id}"> <spring:message
+				code="barter.complaint"/>
+		</a>
+	</display:column>
 
 
 </display:table>

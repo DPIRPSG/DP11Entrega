@@ -58,31 +58,52 @@ public class ComplaintService {
 		
 		result.setUser(user);
 		
-		try{
-			
-			Barter barter;
-			
-			barter = barterService.findOne(barterOrMatchId);
-			
+//		try{
+//			
+//			Barter barter;
+//			
+//			barter = barterService.findOne(barterOrMatchId);
+//			
+//			result.setBarter(barter);
+//			
+//		}catch(Exception barterException){
+//			
+//			try{
+//				
+//				Match match;
+//				
+//				match = matchService.findOne(barterOrMatchId);
+//				
+//				result.setMatch(match);
+//				
+//			}catch(Exception matchAndBarterException){
+//				
+//				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
+//				
+//			}
+//			
+//		}
+		
+		Barter barter;
+		
+		barter = barterService.findOne(barterOrMatchId);
+		
+		if(barter != null){
 			result.setBarter(barter);
+		}else{
 			
-		}catch(Exception barterException){
+			Match match;
 			
-			try{
-				
-				Match match;
-				
-				match = matchService.findOne(barterOrMatchId);
-				
-				result.setMatch(match);
-				
-			}catch(Exception matchAndBarterException){
-				
-				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
-				
-			}
+			match = matchService.findOne(barterOrMatchId);
+			
+			Assert.notNull(match, "You can't create a Complaint without a Barter or a Match asociated.");
+			
+			result.setMatch(match);
+			
+			
 			
 		}
+		
 		
 		return result;
 		
