@@ -52,6 +52,7 @@ public class MatchService {
 		
 		result.setCancelled(false);
 		result.setCreationMoment(new Date()); // Aquí por ser NotNull, pero debe sobreescribirse en el save().
+		result.setClosed(false);
 		
 		return result;
 		
@@ -89,6 +90,7 @@ public class MatchService {
 			
 			match.setCancelled(false);
 			match.setCreationMoment(new Date());
+			match.setClosed(false);
 			
 		}	
 		
@@ -100,6 +102,8 @@ public class MatchService {
 	public void cancel(Match match) { // Método usado para que un User cancele un match en el que esté involucrado.
 		
 		Assert.isTrue(actorService.checkAuthority("USER"), "Only an User loged in into the system can cancel a Match.");
+		
+		Assert.notNull(match);
 		
 		Assert.isTrue(match.getCancelled() == false, "You can't edit, sign or manage a cancelled Match.");
 		
@@ -121,6 +125,8 @@ public class MatchService {
 		
 		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an Administrator loged in into the system can cancel several matchs at the same time.");
 		
+		Assert.notNull(matchs);
+		
 		for(Match m: matchs){
 			if(m.getCancelled() == false){
 				m.setCancelled(true);
@@ -133,6 +139,8 @@ public class MatchService {
 	public void sign(Match match) {
 		
 		Assert.isTrue(actorService.checkAuthority("USER"), "Only an User loged in into the system can sign a Match.");
+		
+		Assert.notNull(match);
 		
 		Assert.isTrue(match.getCancelled() == false, "You can't edit, sign or manage a cancelled Match.");
 		
@@ -165,6 +173,20 @@ public class MatchService {
 		}
 		
 		this.save(matchToSign);
+		
+	}
+	
+	public void close(Match match) {
+		
+		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an Admin loged in into the system can cancel a Match.");
+		
+		Assert.notNull(match);
+		
+		Assert.isTrue(!match.getClosed(), "This match is already closed!");
+		
+		match.setClosed(true);
+		
+		this.save(match);
 		
 	}
 
