@@ -85,12 +85,31 @@
 		</a>
 	</display:column>
 	
+	<spring:message code="barter.closed" var="closedHeader" />
+	<display:column title="${closedHeader}" sortable="true">
+		<jstl:if test="${row_Barter.closed == true}">
+			<spring:message code="barter.yes" />
+		</jstl:if>
+		<jstl:if test="${row_Barter.closed == false}">
+			<spring:message code="barter.no" />
+		</jstl:if>
+	</display:column>
+	
 	<spring:message code="barter.relatedBarter" var="relatedBarterHeader" />
 	<display:column title="${relatedBarterHeader}" sortable="false">
 		<a href="barter/list2.do?barterId=${row_Barter.id}"> <spring:message
 				code="barter.relatedBarter"/>
 		</a>
 	</display:column>
+	
+	<security:authorize access="hasRole('USER')">
+		<spring:message code="barter.complaint" var="complaintHeader" />
+		<display:column title="${complaintHeader}" sortable="false">
+			<a href="complaint/user/list.do?barterOrMatchId=${row_Barter.id}"> <spring:message
+					code="barter.complaint"/>
+			</a>
+		</display:column>
+	</security:authorize>
 
 
 </display:table>
