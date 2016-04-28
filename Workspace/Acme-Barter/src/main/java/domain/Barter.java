@@ -68,6 +68,7 @@ public class Barter extends DomainEntity{
 	
 	// Relationships ----------------------------------------------------------
 	private User user;
+	private Administrator administrator;
 	private Item offered;
 	private Item requested;
 	private Collection<Match> createdMatch;
@@ -82,6 +83,15 @@ public class Barter extends DomainEntity{
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@Valid
+	@ManyToOne(optional=true)
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+	public void setAdministrator(Administrator admin) {
+		this.administrator = admin;
 	}
 	
 	@Valid
