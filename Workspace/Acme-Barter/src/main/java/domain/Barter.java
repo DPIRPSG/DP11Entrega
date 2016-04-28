@@ -31,6 +31,7 @@ public class Barter extends DomainEntity{
 	private String title;
 	private boolean cancelled;
 	private Date registerMoment;
+	private boolean closed;
 
 	@NotBlank
 	@NotNull
@@ -56,6 +57,13 @@ public class Barter extends DomainEntity{
 	}
 	public void setRegisterMoment(Date registerMoment) {
 		this.registerMoment = registerMoment;
+	}
+	
+	public boolean getClosed() {
+		return closed;
+	}
+	public void setClosed(boolean closed) {
+		this.closed = closed;
 	}
 	
 	// Relationships ----------------------------------------------------------

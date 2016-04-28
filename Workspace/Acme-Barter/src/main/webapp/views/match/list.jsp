@@ -50,6 +50,16 @@
 		<spring:message code="match.report" var="reportHeader" />
 		<acme:displayColumn title="${reportHeader}" sorteable="false" value="${row_Match.report}"/>
 		
+		<spring:message code="match.closed" var="closedHeader" />
+		<display:column title="${closedHeader}" sortable="true">
+			<jstl:if test="${row_Match.closed == true}">
+				<spring:message code="match.yes" />
+			</jstl:if>
+			<jstl:if test="${row_Match.closed == false}">
+				<spring:message code="match.no" />
+			</jstl:if>
+		</display:column>
+		
 		<security:authorize access="hasAnyRole('ADMIN', 'AUDITOR')">
 			<spring:message code="match.cancelled" var="cancelledHeader" />
 			<acme:displayColumn title="${cancelledHeader}" sorteable="true" value="${row_Match.cancelled}"/>
@@ -69,6 +79,13 @@
 				<jstl:if test="${row_Match.creatorBarter.user.id == userId && row_Match.offerSignsDate == null || row_Match.receiverBarter.user.id == userId && row_Match.requestSignsDate == null}">
 					<a href="match/user/sign.do?matchId=${row_Match.id}"><spring:message code="match.sign" /></a>
 				</jstl:if>
+			</display:column>
+			
+			<spring:message code="match.complaint" var="complaintHeader" />
+			<display:column title="${complaintHeader}" sortable="false">
+				<a href="complaint/user/list.do?barterOrMatchId=${row_Match.id}"> <spring:message
+						code="match.complaint"/>
+				</a>
 			</display:column>
 			
 		</security:authorize>

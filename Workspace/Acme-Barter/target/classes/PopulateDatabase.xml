@@ -1968,6 +1968,7 @@
 <!-- 				<ref bean="barter2"/> -->
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter2" class="domain.Barter">
@@ -1991,6 +1992,7 @@
 				<ref bean="barter1"/>
 			</list>
 		</property>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<bean id="barter3" class="domain.Barter">
@@ -2013,6 +2015,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter4" class="domain.Barter">
@@ -2035,6 +2038,7 @@
 <!-- 				<ref bean="barter5"/> -->
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter5" class="domain.Barter">
@@ -2059,6 +2063,7 @@
 <!-- 				<ref bean="barter6"/> -->
 			</list>
 		</property>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<bean id="barter6" class="domain.Barter">
@@ -2082,6 +2087,7 @@
 				<ref bean="barter5"/>
 			</list>
 		</property>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<bean id="barter7" class="domain.Barter">
@@ -2103,6 +2109,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter8" class="domain.Barter">
@@ -2124,6 +2131,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter9" class="domain.Barter">
@@ -2147,6 +2155,7 @@
 				<ref bean="barter8"/>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter10" class="domain.Barter">
@@ -2168,6 +2177,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<bean id="barter11" class="domain.Barter">
@@ -2191,6 +2201,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter12" class="domain.Barter">
@@ -2214,6 +2225,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="barter13" class="domain.Barter">
@@ -2235,6 +2247,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<!-- Match -->
@@ -2249,6 +2262,7 @@
 		<property name="auditor" ref="auditor1"/>
 		<property name="creatorBarter" ref="barter1"/>
 		<property name="receiverBarter" ref="barter2"/>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="match2" class="domain.Match">
@@ -2261,6 +2275,7 @@
 <!-- 		<property name="auditor" ref="auditor2"/> -->
 		<property name="creatorBarter" ref="barter3"/>
 		<property name="receiverBarter" ref="barter4"/>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<bean id="match3" class="domain.Match">
@@ -2273,6 +2288,7 @@
 		<property name="auditor" ref="auditor3"/>
 		<property name="creatorBarter" ref="barter5"/>
 		<property name="receiverBarter" ref="barter6"/>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="match4" class="domain.Match">
@@ -2285,6 +2301,7 @@
 		<property name="auditor" ref="auditor3"/>
 		<property name="creatorBarter" ref="barter5"/>
 		<property name="receiverBarter" ref="barter6"/>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="match5" class="domain.Match">
@@ -2293,6 +2310,7 @@
 		<property name="cancelled" value="true"/>
 		<property name="creatorBarter" ref="barter11"/>
 		<property name="receiverBarter" ref="barter12"/>
+		<property name="closed" value="false"/>
 	</bean>
 	
 	<bean id="match6" class="domain.Match">
@@ -2300,6 +2318,7 @@
 		<property name="legalText" ref="legalText1"/>
 		<property name="creatorBarter" ref="barter11"/>
 		<property name="receiverBarter" ref="barter12"/>
+		<property name="closed" value="true"/>
 	</bean>
 	
 	<!-- domain.Complaint -->
@@ -2307,76 +2326,91 @@
 	<bean id="complaint1" class="domain.Complaint">
 		<property name="user" ref="user1"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="Pero esto qué es?!"/>
 	</bean>
 	
 	<bean id="complaint2" class="domain.Complaint">
 		<property name="user" ref="user1"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="No es lo que esperaba"/>
 	</bean>
 	
 	<bean id="complaint3" class="domain.Complaint">
 		<property name="user" ref="user2"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="No tiene sentido esto..."/>
 	</bean>
 	
 	<bean id="complaint4" class="domain.Complaint">
 		<property name="user" ref="user3"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="Mmm... ¿En serio cambias esto?"/>
 	</bean>
 	
 	<bean id="complaint5" class="domain.Complaint">
 		<property name="user" ref="user4"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="¡Está intentando engañaros!"/>
 	</bean>
 	
 	<bean id="complaint6" class="domain.Complaint">
 		<property name="user" ref="user6"/>
 		<property name="barter" ref="barter1"/>
+		<property name="text" value="¡Demasiado barato! Seguro que es mentira..."/>
 	</bean>
 	
 	<bean id="complaint7" class="domain.Complaint">
 		<property name="user" ref="user1"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint8" class="domain.Complaint">
 		<property name="user" ref="user2"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint9" class="domain.Complaint">
 		<property name="user" ref="user2"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint10" class="domain.Complaint">
-		<property name="user" ref="user3"/>
+		<property name="user" ref="user1"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint11" class="domain.Complaint">
-		<property name="user" ref="user5"/>
+		<property name="user" ref="user2"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint12" class="domain.Complaint">
-		<property name="user" ref="user7"/>
+		<property name="user" ref="user2"/>
 		<property name="match" ref="match1"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint13" class="domain.Complaint">
-		<property name="user" ref="user1"/>
+		<property name="user" ref="user3"/>
 		<property name="match" ref="match2"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint14" class="domain.Complaint">
 		<property name="user" ref="user2"/>
 		<property name="match" ref="match3"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	<bean id="complaint15" class="domain.Complaint">
 		<property name="user" ref="user3"/>
 		<property name="barter" ref="barter2"/>
+		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
 	
