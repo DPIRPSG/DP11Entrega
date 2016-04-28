@@ -49,6 +49,9 @@ public class UserServiceTest extends AbstractTest {
 	private ActorService actorService;
 	
 	@Autowired
+	private ComplaintService complaintService;
+	
+	@Autowired
 	private SocialIdentityService socialIdentityService;
 	
 	@Autowired
@@ -859,6 +862,44 @@ public class UserServiceTest extends AbstractTest {
 				"El test devuelve " + result.size() + " " + result.toString()
 						+ " pero debían ser " + inTest.size() + " "
 						+ inTest.toString());
+		
+				// En la variable inTest están los usuarios que debería devolver la query
+		
+		
+		// Checks results	
+	}
+	
+	/**
+	 * Acme-Barter - 2.0 - Level C - 4.2.4
+	 *  The users who have created more complaints than the average.
+	 */
+	@Test 
+	public void testUsersMoreComplaintsThanAverage() {
+		// Declare variables
+		Collection<User> codeResult;
+		Collection<User> testCalculate;
+		double average;
+		
+		// Load objects to test
+		authenticate("admin");
+		
+		average = complaintService.findAll().size() / userService.findAll().size();
+		
+		testCalculate = new ArrayList<User>();
+		
+		for (User u:userService.findAll()){
+			double calculate;
+			calculate = complaintService.findByUser(u).size();
+			if(calculate >= average){
+				testCalculate.add(u);
+			}
+		}
+		
+		// Checks basic requirements
+
+		// Execution of test
+		
+		Assert.notNull(null, "A espera de la realización del código");
 		
 				// En la variable inTest están los usuarios que debería devolver la query
 		
