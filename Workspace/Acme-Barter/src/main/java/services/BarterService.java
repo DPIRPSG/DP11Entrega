@@ -156,6 +156,7 @@ public class BarterService {
 		barter.setCreatedMatch(createdMatch);
 		barter.setReceivedMatch(receivedMatch);
 		barter.setRelatedBarter(relatedBarter);
+		barter.setClosed(false);
 		
 		return barter;
 		
@@ -188,6 +189,7 @@ public class BarterService {
 			relatedBarter = new ArrayList<>();
 			
 			barter.setCancelled(false);
+			barter.setClosed(false);
 			barter.setRegisterMoment(new Date());
 			
 			barter.setUser(user);
