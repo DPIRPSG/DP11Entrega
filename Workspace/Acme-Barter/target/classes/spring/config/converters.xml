@@ -59,6 +59,9 @@
 		
 		<bean class="converters.AttributeDescriptionToStringConverter" />
 		<bean class="converters.StringToAttributeDescriptionConverter" />
+		
+		<bean class="converters.ComplaintToStringConverter" />
+		<bean class="converters.StringToComplaintConverter" />
 	
 	</util:list>
 	

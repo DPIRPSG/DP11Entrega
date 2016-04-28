@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ComplaintRepository;
+import domain.Barter;
 import domain.Complaint;
+import domain.Match;
 import domain.User;
 
 @Service
@@ -56,31 +58,31 @@ public class ComplaintService {
 		
 		result.setUser(user);
 		
-//		try{
-//			
-//			Barter barter;
-//			
-//			barter = barterService.findOne(barterOrMatchId);
-//			
-//			result.setBarter(barter);
-//			
-//		}catch(Exception barterException){
-//			
-//			try{
-//				
-//				Match match;
-//				
-//				match = matchService.findOne(barterOrMatchId);
-//				
-//				result.setMatch(match);
-//				
-//			}catch(Exception matchAndBarterException){
-//				
-//				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
-//				
-//			}
-//			
-//		}
+		try{
+			
+			Barter barter;
+			
+			barter = barterService.findOne(barterOrMatchId);
+			
+			result.setBarter(barter);
+			
+		}catch(Exception barterException){
+			
+			try{
+				
+				Match match;
+				
+				match = matchService.findOne(barterOrMatchId);
+				
+				result.setMatch(match);
+				
+			}catch(Exception matchAndBarterException){
+				
+				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
+				
+			}
+			
+		}
 		
 		return result;
 		
@@ -93,40 +95,21 @@ public class ComplaintService {
 		
 		Assert.notNull(complaint);
 		
-		Complaint result;
 		User user;
+		Collection<Match> matchesInvolved;
 		
 		user = userService.findByPrincipal();
 		
-		result = new Complaint();
+		matchesInvolved = matchService.findAllUserInvolvesIncludeCancelled(user.getId());
 		
-		result.setUser(user);
+		if(complaint.getMatch() != null){ // Si está siendo creado para un Match
+			Assert.isTrue(matchesInvolved.contains(complaint.getMatch()), "You can't create a Complaint to a Match in which you aren't involved.");
+			Assert.isTrue(!complaint.getMatch().getClosed(), "You can't create a Complaint for a closed Match.");
+		}else{ // Si está siendo creado para un Barter
+			Assert.isTrue(!complaint.getBarter().getClosed(), "You can't create a Complaint for a closed Barter.");
+		}
 		
-//		try{
-//			
-//			Barter barter;
-//			
-//			barter = barterService.findOne(barterOrMatchId);
-//			
-//			result.setBarter(barter);
-//			
-//		}catch(Exception barterException){
-//			
-//			try{
-//				
-//				Match match;
-//				
-//				match = matchService.findOne(barterOrMatchId);
-//				
-//				result.setMatch(match);
-//				
-//			}catch(Exception matchAndBarterException){
-//				
-//				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
-//				
-//			}
-//			
-//		}
+		complaint.setUser(user);
 		
 		complaint = complaintRepository.save(complaint);
 		
@@ -152,7 +135,7 @@ public class ComplaintService {
 	public Collection<Complaint> findAllByBarterOrMatch(int barterOrMatchId) {
 		Collection<Complaint> result;
 		
-		result = complaintRepository.findAll();
+		result = complaintRepository.findAllByBarterOrMatch(barterOrMatchId);
 		
 		return result;
 	}

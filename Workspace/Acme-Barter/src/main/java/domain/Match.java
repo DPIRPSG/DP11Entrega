@@ -27,6 +27,7 @@ public class Match extends DomainEntity{
 	private Date requestSignsDate;
 	private boolean cancelled;
 	private String report;
+	private boolean closed;
 	
 	
 	@NotNull
@@ -69,6 +70,13 @@ public class Match extends DomainEntity{
 	}
 	public void setReport(String report) {
 		this.report = report;
+	}
+	
+	public boolean getClosed() {
+		return closed;
+	}
+	public void setClosed(boolean closed) {
+		this.closed = closed;
 	}
 
 	// Relationships ----------------------------------------------------------
