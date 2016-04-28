@@ -81,14 +81,14 @@
 				</jstl:if>
 			</display:column>
 			
-			<spring:message code="match.complaint" var="complaintHeader" />
-			<display:column title="${complaintHeader}" sortable="false">
-				<a href="complaint/user/list.do?barterOrMatchId=${row_Match.id}"> <spring:message
-						code="match.complaint"/>
-				</a>
-			</display:column>
-			
 		</security:authorize>
+			
+		<spring:message code="match.complaint" var="complaintHeader" />
+		<display:column title="${complaintHeader}" sortable="false">
+			<a href="complaint/list.do?barterOrMatchId=${row_Match.id}"> <spring:message
+					code="match.complaint"/>
+			</a>
+		</display:column>
 
 	<security:authorize access="hasRole('AUDITOR')">
 		<spring:message code="match.edit" var="editHeader" />

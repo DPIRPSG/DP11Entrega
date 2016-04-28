@@ -16,7 +16,7 @@
 <security:authorize access="hasRole('USER')">
 
 	<!-- Form -->
-	<form:form action="match/user/create.do" modelAttribute="match">
+	<form:form action="complaint/user/create.do" modelAttribute="complaint">
 		<!-- Hidden Attributes -->
 		<form:hidden path="id"/>
 		<form:hidden path="version"/>
@@ -31,7 +31,7 @@
 		<!-- Action buttons -->
 		<acme:submit name="save" code="complaint.create.save"/>
 		&nbsp;
-		<acme:cancel code="complaint.create.cancel" url="/complaint/user/list.do?barterOrMatchId=${barterOrMatchId}"/>
+		<acme:cancel code="complaint.create.cancel" url="/complaint/list.do?barterOrMatchId=${barterOrMatchId}"/>
 		
 	</form:form>
 

@@ -14,21 +14,22 @@
 
 <spring:message code="complaint.barterOrMatchConcerning"/>: <jstl:out value="${barterOrMatchName}" /><br>
 
+<!-- Listing grid -->
+<display:table pagesize="5" class="displaytag" keepStatus="false"
+	name="complaints" requestURI="${requestURI}" id="row_Complaint">
+	
+	<!-- Attributes -->
+	<spring:message code="complaint.user" var="userHeader" />
+	<acme:displayColumn title="${userHeader}" sorteable="true" value="${row_Complaint.user.userAccount.username}" />
+	
+	<spring:message code="complaint.text" var="textHeader" />
+	<acme:displayColumn title="${textHeader}" sorteable="false" value="${row_Complaint.text}" />
+
+</display:table>
+<br>
+	
 <security:authorize access="hasRole('USER')">
 
-	<!-- Listing grid -->
-	<display:table pagesize="5" class="displaytag" keepStatus="false"
-		name="complaints" requestURI="${requestURI}" id="row_Complaint">
-		
-		<!-- Attributes -->
-		<spring:message code="complaint.user" var="userHeader" />
-		<acme:displayColumn title="${userHeader}" sorteable="true" value="${row_Complaint.user.userAccount.username}" />
-		
-		<spring:message code="complaint.text" var="textHeader" />
-		<acme:displayColumn title="${textHeader}" sorteable="false" value="${row_Complaint.text}" />
-
-	</display:table>
-	<br>
 	<jstl:if test="${ row_Complaint.barter != null }">
 		<jstl:if test="${ row_Complaint.barter.closed == false }">
 			<a href="complaint/user/create.do?barterOrMatchId=${barterOrMatchId}"><spring:message code="complaint.create"/></a>
