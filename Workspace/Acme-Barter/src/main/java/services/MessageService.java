@@ -183,7 +183,6 @@ public class MessageService {
 			if(tempResponse){
 				sendResponseAutoreply(actActorToSend, m.getSender(), m.getSubject(), auto.getText());
 				isResponse = true;
-				break;
 			}
 		}
 		
