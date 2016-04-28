@@ -18,6 +18,7 @@
 	
 	<form:hidden path="title"/>
 	<form:hidden path="cancelled"/>
+	<form:hidden path="closed"/>
 	<form:hidden path="registerMoment"/>
 	
 	<form:hidden path="user"/>
