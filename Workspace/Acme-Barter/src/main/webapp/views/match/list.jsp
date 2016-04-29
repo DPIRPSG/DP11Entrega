@@ -60,6 +60,17 @@
 		</jstl:if>
 	</display:column>
 	
+	<security:authorize access="hasRole('ADMIN')">
+		<jstl:if test="${userIdListing != null}">
+			<spring:message code="match.close" var="closeHeader" />
+			<display:column title="${closeHeader}" sortable="true">
+				<jstl:if test="${row_Match.closed == false}">
+						<a href="match/administrator/close.do?matchId=${row_Match.id}&userId=${userIdListing}"> <spring:message code="match.close"/></a>
+				</jstl:if>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
+	
 	<security:authorize access="hasAnyRole('ADMIN', 'AUDITOR')">
 		<spring:message code="match.cancelled" var="cancelledHeader" />
 		<acme:displayColumn title="${cancelledHeader}" sorteable="true" value="${row_Match.cancelled}"/>
@@ -107,15 +118,6 @@
 				</jstl:if>
 			</jstl:if>
 
-		</display:column>
-	</security:authorize>
-	
-	<security:authorize access="hasRole('ADMIN')">
-	<spring:message code="match.close" var="closeHeader" />
-	<display:column title="${closeHeader}" sortable="true">
-		<jstl:if test="${row_Match.closed == false}">
-				<a href="match/administrator/close.do?matchId=${row_Match.id}&userId=${userIdListing}"> <spring:message code="match.close"/></a>
-		</jstl:if>
 		</display:column>
 	</security:authorize>
 
