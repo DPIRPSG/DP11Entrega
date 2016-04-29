@@ -1,7 +1,5 @@
 package services;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 
 import javax.validation.ConstraintViolationException;
@@ -17,11 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
-import utilities.InvalidPostTestException;
-import utilities.InvalidPreTestException;
 import domain.Barter;
 import domain.Complaint;
-import domain.Item;
 import domain.Match;
 import domain.User;
 
@@ -41,9 +36,6 @@ public class ComplaintServiceTest extends AbstractTest {
 	// Other services needed -----------------------
 	
 	@Autowired
-	private ItemService itemService;
-	
-	@Autowired
 	private BarterService barterService;
 	
 	@Autowired
@@ -54,74 +46,74 @@ public class ComplaintServiceTest extends AbstractTest {
 		
 	// Tests ---------------------------------------
 	
-//	/**
-//	 * Acme-Six-Pack - 2.0 - Level C - 4.2.1
-//	 * The total number of complaints that have been created.
-//	 * 
-//	 */
-//	@Test
-//	public void testNumberComplaintsCreated(){
-//		// Declare variable
-//		int testResult, codeResult;
-//		
-//		// Load objects to test
-//		
-//		testResult = complaintService.findAll().size();
-//		
-//		// Check basic requirements
-//		
-//		// Execution of test
-//		Assert.notNull(null, "A espera del código");
-//		
-//		// Check results
-//		Assert.isTrue(testResult == codeResult);
-//	}
-//	
-//	/**
-//	 * Acme-Six-Pack - 2.0 - Level C - 4.2.2
-//	 *  The average number of complaints per barter.
-//	 * 
-//	 */
-//	@Test
-//	public void testAverageComplaintsBarter(){
-//		// Declare variable
-//		double testResult, codeResult;
-//		
-//		// Load objects to test
-//		
-//		testResult = complaintService.findAll().size() / barterService.findAll().size();
-//		
-//		// Check basic requirements
-//		
-//		// Execution of test
-//		Assert.notNull(null, "A espera del código");
-//		
-//		// Check results
-//		Assert.isTrue(testResult == codeResult);
-//	}
-//	
-//	/**
-//	 * Acme-Six-Pack - 2.0 - Level C - 4.2.3
-//	 *  The average number of complaints per match.
-//	 * 
-//	 */
-//	@Test
-//	public void testAverageComplaintsMatch(){
-//		// Declare variable
-//		double testResult, codeResult;
-//		
-//		// Load objects to test
-//		
-//		testResult = complaintService.findAll().size() / matchService.findAll().size();
-//		
-//		// Check basic requirements
-//		
-//		// Execution of test
-//		Assert.notNull(null, "A espera del código");
-//		
-//		// Check results
-//		Assert.isTrue(testResult == codeResult);
-//	}
+	/**
+	 * Acme-Six-Pack - 2.0 - Level C - 4.2.1
+	 * The total number of complaints that have been created.
+	 * 
+	 */
+	@Test
+	public void testNumberComplaintsCreated(){
+		// Declare variable
+		int testResult, codeResult;
+		
+		// Load objects to test
+		
+		testResult = complaintService.findAll().size();
+		
+		// Check basic requirements
+		
+		// Execution of test
+		Assert.notNull(null, "A espera del código");
+		
+		// Check results
+		Assert.isTrue(testResult == codeResult);
+	}
+	
+	/**
+	 * Acme-Six-Pack - 2.0 - Level C - 4.2.2
+	 *  The average number of complaints per barter.
+	 * 
+	 */
+	@Test
+	public void testAverageComplaintsBarter(){
+		// Declare variable
+		double testResult, codeResult;
+		
+		// Load objects to test
+		
+		testResult = complaintService.findAll().size() / barterService.findAll().size();
+		
+		// Check basic requirements
+		
+		// Execution of test
+		Assert.notNull(null, "A espera del código");
+		
+		// Check results
+		Assert.isTrue(testResult == codeResult);
+	}
+	
+	/**
+	 * Acme-Six-Pack - 2.0 - Level C - 4.2.3
+	 *  The average number of complaints per match.
+	 * 
+	 */
+	@Test
+	public void testAverageComplaintsMatch(){
+		// Declare variable
+		double testResult, codeResult;
+		
+		// Load objects to test
+		
+		testResult = complaintService.findAll().size() / matchService.findAll().size();
+		
+		// Check basic requirements
+		
+		// Execution of test
+		Assert.notNull(null, "A espera del código");
+		
+		// Check results
+		Assert.isTrue(testResult == codeResult);
+	}
 	
 	/**
 	 * Acme-Barter 2.0 - Level c - FR 3.1
@@ -600,7 +592,7 @@ public class ComplaintServiceTest extends AbstractTest {
 	 */
 	@Test(expected=IllegalArgumentException.class)
 	@Rollback(value=true)
-	public void testCreateComplaintError() {
+	public void testCreateComplaintError1() {
 		Complaint complaint;
 		
 		authenticate("user1");		
@@ -610,5 +602,87 @@ public class ComplaintServiceTest extends AbstractTest {
 		complaint = complaintService.save(complaint);
 		
 		authenticate(null);
+	}
+	
+	/**
+	 * Acme-Barter 2.0 - Level c - FR 3.1
+	 * An actor who is authenticated as a user must be able to
+	 * create one or more complaints regarding a barter.
+	 */
+	/**
+	 * Test que comprueba que falla si se crea un Complaint asociado a un Barter y a un Match
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	@Rollback(value=true)
+	public void testCreateComplaintError2() {
+		Complaint complaint;
+		Collection<Complaint> complaints;
+		Collection<Barter> barters;
+		Collection<Match> matches;
+		Barter barter;
+		Match match;
+		User user;
+		int preSave, postSave;
+		
+		authenticate("user1");
+		user = userService.findByPrincipal();
+		barter = null;
+		match = null;
+		
+		barters = barterService.findAll();
+		for(Barter b : barters) {
+			if(b.getUser().getId() != user.getId() && b.getClosed() == false) {
+				barter = b;
+				break;
+			}
+		}
+		matches = matchService.findAllUserInvolves(user.getId());
+		for(Match m : matches) {
+			if(m.getClosed() == false) {
+				match = m;
+			}
+		}
+		
+		complaints = complaintService.findAllByBarterOrMatch(barter.getId());
+		preSave = complaints.size();
+		
+		complaint = complaintService.create(barter.getId());
+		
+		complaint.setText("prueba");
+		complaint.setMatch(match);
+		
+		complaint = complaintService.save(complaint);
+		
+		complaints = complaintService.findAllByBarterOrMatch(barter.getId());
+		postSave = complaints.size();
+		
+		Assert.isTrue(postSave == (preSave + 1));
+		Assert.isTrue(complaints.contains(complaint));
+		
+		authenticate(null);
+	}
+	
+	@Test
+	public void testFindAllByBarter() {
+		Collection<Complaint> complaints;
+		Barter barter;
+		
+		barter = barterService.findAll().iterator().next();
+				
+		complaints = complaintService.findAllByBarterOrMatch(barter.getId());
+		
+		Assert.isTrue(complaints.size() == 6);
+	}
+	
+	@Test
+	public void testFindAllByMatch() {
+		Collection<Complaint> complaints;
+		Match match;
+		
+		match = matchService.findAll().iterator().next();
+				
+		complaints = complaintService.findAllByBarterOrMatch(match.getId());
+		
+		Assert.isTrue(complaints.size() == 6);
 	}
 }
