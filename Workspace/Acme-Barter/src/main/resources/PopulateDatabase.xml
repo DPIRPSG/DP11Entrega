@@ -2410,7 +2410,7 @@
 		<property name="closed" value="true"/>
 	</bean>
 	
-	<!-- domain.Complaint -->
+	<!-- Complaint -->
 	
 	<bean id="complaint1" class="domain.Complaint">
 		<property name="user" ref="user1"/>
@@ -2502,6 +2502,110 @@
 		<property name="text" value="¡Poco creíble!..."/>
 	</bean>
 	
+	<!-- Autoreply -->
+	
+	<bean id="autoreply1" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>coche</value>
+				<value>rojo</value>
+			</list>
+		</property>
+		<property name="text" value="¡Vendo un Ford Fiesta Rojo! Contesta a este mensaje si te interesa."/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply2" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>xbox</value>
+				<value>playstation</value>
+				<value>nintendo</value>
+				<value>wii</value>
+				<value>ds</value>
+			</list>
+		</property>
+		<property name="text" value="¡Cambio consolas! Las vendo o cambio por móviles, portátiles... Acepto ofertas."/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply3" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>moto</value>
+			</list>
+		</property>
+		<property name="text" value="Si tienes cualquier tipo de moto me interesa, soy coleccionista."/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply4" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>compro</value>
+			</list>
+		</property>
+		<property name="text" value="Lo siento, no vendo nada, sólo acepto intercambios."/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply5" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>flor</value>
+				<value>flores</value>
+				<value>orquídeas</value>
+				<value>rosas</value>
+			</list>
+		</property>
+		<property name="text" value="Estoy decorando mi jardín, así que si tienes flores y te interesa algçun artículo de mi perfil avísame."/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply6" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>compro</value>
+				<value>oro</value>
+			</list>
+		</property>
+		<property name="text" value="¡NO vendo oro! ¡Ya basta!"/>
+		<property name="actor" ref="user1"/>
+	</bean>
+	
+	<bean id="autoreply7" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>comida</value>
+			</list>
+		</property>
+		<property name="text" value="Lo siento, no compro ni intercambio nada por comida en internet."/>
+		<property name="actor" ref="user2"/>
+	</bean>
+	
+	<bean id="autoreply8" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>portatil</value>
+				<value>pc</value>
+				<value>ordenador</value>
+			</list>
+		</property>
+		<property name="text" value="Tengo un portátil HP con un i5 de hace 2 años, mira mi perfil y avisa si te interesa."/>
+		<property name="actor" ref="user2"/>
+	</bean>
+	
+	<bean id="autoreply9" class="domain.Autoreply">
+		<property name="keyWords">
+			<list>
+				<value>hola</value>
+				<value>saludos</value>
+				<value>bienvenido</value>
+			</list>
+		</property>
+		<property name="text" value="Gracias, muy amable :)"/>
+		<property name="actor" ref="user3"/>
+	</bean>
 	
 	
 </beans>
