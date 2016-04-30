@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.BarterRepository;
+import domain.Administrator;
 import domain.Barter;
 import domain.Match;
 import domain.User;
@@ -31,6 +32,9 @@ public class BarterService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private AdministratorService administratorService;
 	
 	// Constructors -----------------------------------------------------------
 
@@ -156,6 +160,7 @@ public class BarterService {
 		barter.setCreatedMatch(createdMatch);
 		barter.setReceivedMatch(receivedMatch);
 		barter.setRelatedBarter(relatedBarter);
+		barter.setClosed(false);
 		
 		return barter;
 		
@@ -188,6 +193,7 @@ public class BarterService {
 			relatedBarter = new ArrayList<>();
 			
 			barter.setCancelled(false);
+			barter.setClosed(false);
 			barter.setRegisterMoment(new Date());
 			
 			barter.setUser(user);
@@ -247,6 +253,25 @@ public class BarterService {
 		barter.setCancelled(true);	
 		
 		barterRepository.save(barter);
+		
+	}
+	
+	public void close(Barter barter) {
+		
+		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an Admin loged in into the system can cancel a Barter.");
+		
+		Assert.notNull(barter);
+		
+		Assert.isTrue(!barter.getClosed(), "This barter is already closed!");
+		
+		Administrator admin;
+		
+		admin = administratorService.findByPrincipal();
+		
+		barter.setClosed(true);
+		barter.setAdministrator(admin);
+		
+		this.save(barter);
 		
 	}
 	

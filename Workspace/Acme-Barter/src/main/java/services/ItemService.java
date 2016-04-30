@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ItemRepository;
+import domain.AttributeDescription;
 import domain.Item;
 
 @Service
@@ -51,10 +52,13 @@ public class ItemService {
 		
 		Item result;
 		Collection<String> pictures;
+		Collection<AttributeDescription> attributesDescription;
 		
 		result = new Item();
 		pictures = new ArrayList<String>();
+		attributesDescription = new ArrayList<AttributeDescription>();
 		result.setPictures(pictures);
+		result.setAttributesDescription(attributesDescription);
 		
 		return result;
 	}

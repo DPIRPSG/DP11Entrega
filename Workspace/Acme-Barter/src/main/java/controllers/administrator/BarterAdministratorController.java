@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import controllers.AbstractController;
-
 import services.BarterService;
+import controllers.AbstractController;
 import domain.Barter;
 
 @Controller
@@ -111,6 +110,22 @@ public class BarterAdministratorController extends AbstractController {
 			result.addObject("messageStatus", "barter.cancel.error");
 		}
 		
+		return result;
+	}
+	
+	// Closing ---------------------------------------------------------------
+	
+	@RequestMapping(value = "/close", method = RequestMethod.GET)
+	public ModelAndView close(@RequestParam int barterId, @RequestParam int userId) {
+		ModelAndView result;
+		Barter barter;
+		
+		barter = barterService.findOne(barterId);
+
+		barterService.close(barter);
+		
+		result = new ModelAndView("redirect:../listByUser.do?userId=" + userId);
+
 		return result;
 	}
 	
