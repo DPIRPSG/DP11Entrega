@@ -2607,5 +2607,105 @@
 		<property name="actor" ref="user3"/>
 	</bean>
 	
+	<!-- Attribute -->
+	
+	<bean id="attribute1" class="domain.Attribute">
+		<property name="name" value="color"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="attribute2" class="domain.Attribute">
+		<property name="name" value="size"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="attribute3" class="domain.Attribute">
+		<property name="name" value="type"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="attribute4" class="domain.Attribute">
+		<property name="name" value="power"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="attribute5" class="domain.Attribute">
+		<property name="name" value="warranty"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="attribute6" class="domain.Attribute">
+		<property name="name" value="use time"/>
+		<property name="attributesDescription">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- AttributeDescription -->
+	
+	<bean id="attributeDescription1" class="domain.AttributeDescription">
+		<property name="value" value="blue"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute1"/>
+	</bean>
+	
+	<bean id="attributeDescription2" class="domain.AttributeDescription">
+		<property name="value" value="black"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute1"/>
+	</bean>
+	
+	<bean id="attributeDescription3" class="domain.AttributeDescription">
+		<property name="value" value="big"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute2"/>
+	</bean>
+	
+	<bean id="attributeDescription4" class="domain.AttributeDescription">
+		<property name="value" value="hp"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute3"/>
+	</bean>
+	
+	<bean id="attributeDescription5" class="domain.AttributeDescription">
+		<property name="value" value="i5"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute4"/>
+	</bean>
+	
+	<bean id="attributeDescription6" class="domain.AttributeDescription">
+		<property name="value" value="2 years"/>
+		<property name="item" ref="item1"/>
+		<property name="attribute" ref="attribute6"/>
+	</bean>
+	
+	<bean id="attributeDescription7" class="domain.AttributeDescription">
+		<property name="value" value="magenta"/>
+		<property name="item" ref="item2"/>
+		<property name="attribute" ref="attribute1"/>
+	</bean>
+	
+	<bean id="attributeDescription8" class="domain.AttributeDescription">
+		<property name="value" value="new"/>
+		<property name="item" ref="item3"/>
+		<property name="attribute" ref="attribute6"/>
+	</bean>
+	
 	
 </beans>
