@@ -60,8 +60,8 @@ public class DashboardAdministratorController extends AbstractController {
 		Collection<User> getUsersWithNoBarterThisMonth;
 		
 		Integer getTotalNumberOfComplaintsCreated;
-//		Double getAverageOfComplaintsPerBarter;
-//		Double getAverageOfComplaintsPerMatch;
+		Double getAverageOfComplaintsPerBarter;
+		Double getAverageOfComplaintsPerMatch;
 //		Collection<User> getUsersWhoHaveCreatedMoreComplaintsThatAverage;
 		
 		// Level B
@@ -87,8 +87,8 @@ public class DashboardAdministratorController extends AbstractController {
 		getUsersWithNoBarterThisMonth = userService.getUsersWithNoBarterThisMonth();
 		
 		getTotalNumberOfComplaintsCreated = complaintService.getTotalNumberOfComplaintsCreated();
-//		getAverageOfComplaintsPerBarter = barterService.getAverageOfComplaintsPerBarter();
-//		getAverageOfComplaintsPerMatch = matchService.getAverageOfComplaintsPerMatch();
+		getAverageOfComplaintsPerBarter = barterService.getAverageOfComplaintsPerBarter();
+		getAverageOfComplaintsPerMatch = matchService.getAverageOfComplaintsPerMatch();
 //		getUsersWhoHaveCreatedMoreComplaintsThatAverage = userService.getUsersWhoHaveCreatedMoreComplaintsThatAverage();
 				
 		// Level B
@@ -114,8 +114,8 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("getUsersWithNoBarterThisMonth", getUsersWithNoBarterThisMonth);
 		
 		result.addObject("getTotalNumberOfComplaintsCreated", getTotalNumberOfComplaintsCreated);
-//		result.addObject("getAverageOfComplaintsPerBarter", getAverageOfComplaintsPerBarter);
-//		result.addObject("getAverageOfComplaintsPerMatch", getAverageOfComplaintsPerMatch);
+		result.addObject("getAverageOfComplaintsPerBarter", getAverageOfComplaintsPerBarter);
+		result.addObject("getAverageOfComplaintsPerMatch", getAverageOfComplaintsPerMatch);
 //		result.addObject("getUsersWhoHaveCreatedMoreComplaintsThatAverage", getUsersWhoHaveCreatedMoreComplaintsThatAverage);
 
 		// Level B

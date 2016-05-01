@@ -31,5 +31,5 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 	Collection<Match> findAllByAuditorId(int auditorId);
 	
 	@Query("select count(c) from Complaint c right join c.match m group by m")
-	Collection<Integer> getCountOfComplaintsPerMatch();
+	Collection<Long> getCountOfComplaintsPerMatch();
 }

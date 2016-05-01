@@ -79,6 +79,27 @@
 		</jstl:otherwise>
 	</jstl:choose>
 	
+	<h3><spring:message code="administrator.getAverageOfComplaintsPerBarter"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getAverageOfComplaintsPerBarter == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getAverageOfComplaintsPerBarter}" />
+		</jstl:otherwise>
+	</jstl:choose>
+	
+	<h3><spring:message code="administrator.getAverageOfComplaintsPerMatch"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getAverageOfComplaintsPerMatch == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getAverageOfComplaintsPerMatch}" />
+		</jstl:otherwise>
+	</jstl:choose>
 	
   	
   	<h3><spring:message code="administrator.minumumNumberBarterPerUser"/></h3>

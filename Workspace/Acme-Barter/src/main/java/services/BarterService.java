@@ -346,13 +346,13 @@ public class BarterService {
 	
 	public Double getAverageOfComplaintsPerBarter(){
 		Double result = 0.0;
-		Collection<Integer> count;
-		Integer totalCount = 0;
+		Collection<Long> count;
+		Long totalCount = 0L;
 		
 		count = barterRepository.getCountOfComplaintsPerBarter();
 		
-		for(Integer i:count){
-			totalCount += i;
+		for(Long l:count){
+			totalCount += l;
 		}
 		
 		result = totalCount.doubleValue();
