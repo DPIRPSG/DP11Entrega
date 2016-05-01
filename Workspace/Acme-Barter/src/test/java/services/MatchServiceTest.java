@@ -1597,4 +1597,110 @@ public class MatchServiceTest extends AbstractTest {
 		
 		authenticate(null);
 	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que un admin puede cerrar un Match
+	 */
+	@Test
+	public void testCloseMatchOk() {
+		Collection<Match> matches;
+		Match match;
+		
+		matches = matchService.findAll();
+		match = null;
+		
+		for(Match m : matches) {
+			if(m.getClosed() == false) {
+				match = m;
+				break;
+			}
+		}
+		Assert.isTrue(match.getClosed() == false);
+		
+		authenticate("admin");
+		
+		matchService.close(match);
+		
+		match = matchService.findOne(match.getId());
+		
+		Assert.isTrue(match.getClosed() == true);
+		
+		authenticate(null);
+	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que solo un admin puede cerrar un Matcth
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	@Rollback(value=true)
+	public void testCloseMatchError1() {
+		Collection<Match> matches;
+		Match match;
+		
+		matches = matchService.findAll();
+		match = null;
+		
+		for(Match m : matches) {
+			if(m.getClosed() == false) {
+				match = m;
+				break;
+			}
+		}
+		Assert.isTrue(match.getClosed() == false);
+				
+		matchService.close(match);
+		
+		match = matchService.findOne(match.getId());
+		
+		Assert.isTrue(match.getClosed() == true);
+	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que si se intenta cerrar un Match ya cerrado, falla
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	@Rollback(value=true)
+	public void testCloseMatchError2() {
+		Collection<Match> matches;
+		Match match;
+		
+		matches = matchService.findAll();
+		match = null;
+		
+		for(Match m : matches) {
+			if(m.getClosed() == true) {
+				match = m;
+				break;
+			}
+		}
+		Assert.isTrue(match.getClosed() == true);
+		
+		authenticate("admin");
+		
+		matchService.close(match);
+		
+		match = matchService.findOne(match.getId());
+		
+		Assert.isTrue(match.getClosed() == true);
+		
+		authenticate(null);
+	}
 }

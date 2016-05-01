@@ -67,6 +67,7 @@ public class MatchController extends AbstractController {
 		result.addObject("requestURI", "match/list.do?userId=" + String.valueOf(userId));
 		result.addObject("matches", matches);
 		result.addObject("userId", userPrincipalId);
+		result.addObject("userIdListing", userId);
 		result.addObject("noDisplayHeader", true);
 		if(actorService.checkAuthority("AUDITOR")){
 			Auditor actAuditor = auditorService.findByPrincipal();

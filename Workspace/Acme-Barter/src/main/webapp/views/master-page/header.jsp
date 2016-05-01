@@ -39,6 +39,7 @@
 					<li><a href="match/user/display.do"><spring:message code="barter.novedades" /></a></li>
 				</ul>
 			</li>
+			<li><a class="fNiv" href="item/user/list.do"><spring:message code="master.page.items" /></a></li>
 			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.users" /></a></li>			
 			<li><a class="fNiv" href="user/user/followed.do"><spring:message code="master.page.followed" /></a></li>			
 			<li><a class="fNiv" href="user/user/followers.do"><spring:message code="master.page.followers" /></a></li>			
@@ -50,6 +51,7 @@
 					<li class="arrow"></li>
 					<li><a href="match/administrator/list.do"><spring:message code="master.page.match" /></a></li>
 					<li><a href="barter/administrator/list.do"><spring:message code="master.page.barter" /></a></li>
+					<li><a href="attribute/administrator/list.do"><spring:message code="master.page.attribute" /></a></li>
 					<li><a href="legal-text/administrator/list.do"><spring:message code="master.page.list.legalTexts" /></a></li>
 					<li><a href="auditor/administrator/register.do"><spring:message code="master.page.register.auditor" /></a></li>
 				</ul>
@@ -82,8 +84,12 @@
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
-			<li><a class="fNiv" href="folder/actor/list.do"><spring:message code="master.page.messages" /></a></li>
-		
+			<li><a class="fNiv" href="folder/actor/list.do"><spring:message code="master.page.messages" /></a>
+				<ul> 
+					<li class="arrow"></li>
+					<li><a href="autoreply/actor/list.do"><spring:message code="master.page.autoreply" /></a></li>
+				</ul>
+			</li>
 			<!-- <li><a href="j_spring_security_logout"><spring:message code="master.page.logout" />(<security:authentication property="principal.username" />)</a></li> -->
 			<li><a class="fNiv"><security:authentication property="principal.username" /></a>
 				<ul>

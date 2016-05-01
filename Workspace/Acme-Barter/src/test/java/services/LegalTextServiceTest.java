@@ -345,8 +345,9 @@ public class LegalTextServiceTest extends AbstractTest{
 		authenticate("admin");
 		allLegalTexts = legalTextService.findAll();
 		for(LegalText l:allLegalTexts){
-			if(l.getId() == 134){
+			if(l.getText().equals("Queda sujeto a las condiciones del auditor del Emparejamiento, Acme Barter Inc. (y cualquiera de sus auditores) se reserva el derecho de controlar y/o cancelar cualquier intercambio sin previo aviso.")){
 				result = l;
+				break;
 			}
 		}
 		
