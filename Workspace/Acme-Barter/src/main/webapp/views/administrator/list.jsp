@@ -68,6 +68,52 @@
   		</display:column>
   	</display:table>
   	
+  	<h3><spring:message code="administrator.getTotalNumberOfComplaintsCreated"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getTotalNumberOfComplaintsCreated == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getTotalNumberOfComplaintsCreated}" />
+		</jstl:otherwise>
+	</jstl:choose>
+	
+	<h3><spring:message code="administrator.getAverageOfComplaintsPerBarter"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getAverageOfComplaintsPerBarter == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getAverageOfComplaintsPerBarter}" />
+		</jstl:otherwise>
+	</jstl:choose>
+	
+	<h3><spring:message code="administrator.getAverageOfComplaintsPerMatch"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getAverageOfComplaintsPerMatch == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getAverageOfComplaintsPerMatch}" />
+		</jstl:otherwise>
+	</jstl:choose>
+	
+  	<h3><spring:message code="administrator.getUsersWhoHaveCreatedMoreComplaintsThatAverage"/></h3>
+	<!-- Listing grid -->
+	<display:table pagesize="5" class="displaytag" keepStatus="true"
+  		name="getUsersWhoHaveCreatedMoreComplaintsThatAverage" requestURI="${requestURI}" id="row8">
+		<!-- Attributes -->
+		<spring:message code="user.name" var="nameHeader" />
+		<display:column title="${nameHeader}" 
+  			sortable="false" >
+ 			<jstl:out value="${row8.name}"/>
+  		</display:column>
+  	</display:table>
+  	
+  	
   	<h3><spring:message code="administrator.minumumNumberBarterPerUser"/></h3>
 	<!-- Result -->
 	<jstl:choose>

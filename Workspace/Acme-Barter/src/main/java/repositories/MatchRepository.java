@@ -29,4 +29,7 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 	
 	@Query("select m from Match m join m.auditor a where a.id=?1 order by m.creationMoment desc")
 	Collection<Match> findAllByAuditorId(int auditorId);
+	
+	@Query("select count(c) from Complaint c right join c.match m group by m")
+	Collection<Long> getCountOfComplaintsPerMatch();
 }

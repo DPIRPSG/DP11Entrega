@@ -161,4 +161,12 @@ public class ComplaintService {
 		return result;
 	}
 	
+	public Integer getTotalNumberOfComplaintsCreated(){
+		Integer result;
+		
+		result = complaintRepository.getTotalNumberOfComplaintsCreated();
+		
+		return result;
+	}
+	
 }
