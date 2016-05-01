@@ -34,11 +34,15 @@
 		
 		<value>/views/folder/messages</value>
 		<value>/views/message/messages</value>
+		<value>/views/autoreply/messages</value>
 		
 		<value>/views/legal-text/messages</value>
 		<value>/views/barter/messages</value>
 		<value>/views/item/messages</value>
 		<value>/views/match/messages</value>
+		<value>/views/attribute/messages</value>
+		<value>/views/attribute-description/messages</value>
+		<value>/views/complaint/messages</value>
 		
 		<value>/views/forms/messages</value>
 			

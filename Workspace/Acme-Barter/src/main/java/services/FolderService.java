@@ -239,6 +239,7 @@ public class FolderService {
 		names.add("OutBox");
 		names.add("TrashBox");
 		names.add("SpamBox");
+		names.add("Auto-reply box");
 				
 		
 		for (String string : names) {
