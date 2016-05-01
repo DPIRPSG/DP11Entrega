@@ -343,4 +343,26 @@ public class BarterService {
 		
 		return result;
 	}
+	
+	public Double getAverageOfComplaintsPerBarter(){
+		Double result = 0.0;
+		Collection<Integer> count;
+		Integer totalCount = 0;
+		
+		count = barterRepository.getCountOfComplaintsPerBarter();
+		
+		for(Integer i:count){
+			totalCount += i;
+		}
+		
+		result = totalCount.doubleValue();
+		if(count.size() != 0){
+			result = result / count.size();
+		}else{
+			result = 0.0;
+		}
+		
+		return result;
+		
+	}
 }

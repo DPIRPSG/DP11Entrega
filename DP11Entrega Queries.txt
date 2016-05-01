@@ -1,0 +1,18 @@
+Queries DP11Entrega:
+
+1) The total number of complaints that have been created. ->
+select count(c) from Complaint c;
+
+2) The average number of complaints per barter. -> Falta el avg por servicios
+select count(c) from Complaint c right join c.barter b group by b;
+
+
+3) The average number of complaints per match. -> Falta el avg por servicios
+select count(c) from Complaint c right join c.match m group by m;
+
+
+4) The users who have created more complaints than the average. -> Falta elegir el user por servicios
+select count(c) from Complaint c right join c.user u group by u;
+
+
+
