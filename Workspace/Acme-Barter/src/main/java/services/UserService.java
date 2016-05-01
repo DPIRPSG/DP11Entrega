@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Barter;
+import domain.Complaint;
 import domain.Match;
 import domain.User;
 import domain.Folder;
@@ -50,6 +51,9 @@ public class UserService {
 	
 	@Autowired
 	private MatchService matchService;
+	
+	@Autowired
+	private ComplaintService complaintService;
 
 	
 	//Constructors -----------------------------------------------------------
@@ -524,6 +528,49 @@ public class UserService {
 				if(!numberOfMatchesPerUser.get(u).equals(null) && numberOfMatchesPerUser.get(u) == max){
 					result.add(u);
 				}
+			}
+		}
+		
+		return result;
+	}
+	
+	public Collection<User> getUsersWhoHaveCreatedMoreComplaintsThatAverage(){
+		Collection<User> result = new HashSet<>();
+		Double average = 0.0;
+		Collection<Integer> count;
+		Integer totalCount = 0;
+		Collection<User> allUser;
+		Collection<Complaint> allComplaints;
+		Map<User, Integer> numberOfComplaintsPerUser = new HashMap<>();
+		
+		count = userRepository.getUsersWhoHaveCreatedMoreComplaintsThanTheAverage();
+		
+		for(Integer i:count){
+			totalCount += i;
+		}
+		
+		average = totalCount.doubleValue();
+		if(count.size() != 0){
+			average = average / count.size();
+		}else{
+			average = 0.0;
+		}
+		
+		allComplaints = complaintService.findAll();
+		
+		for(Complaint c:allComplaints){
+			if(numberOfComplaintsPerUser.containsKey(c.getUser())){
+				numberOfComplaintsPerUser.put(c.getUser(), numberOfComplaintsPerUser.get(c.getUser())+1);
+			}else{
+				numberOfComplaintsPerUser.put(c.getUser(), 1);
+			}
+		}
+		
+		allUser = numberOfComplaintsPerUser.keySet();
+		
+		for(User u:allUser){
+			if(numberOfComplaintsPerUser.get(u)>average){
+				result.add(u);
 			}
 		}
 		

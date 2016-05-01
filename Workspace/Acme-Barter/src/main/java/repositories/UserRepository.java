@@ -28,4 +28,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	@Query("select u1 from Barter b1 left join b1.user u1 where b1.cancelled IS TRUE group by u1 having count(u1) >= all(select count(u2) from Barter b2 left join b2.user u2 where b2.cancelled IS TRUE group by u2)")
 	Collection<User> getUsersWithMoreBartersCancelled();
+	
+	@Query("select count(c) from Complaint c right join c.user u group by u")
+	Collection<Integer> getUsersWhoHaveCreatedMoreComplaintsThanTheAverage();
 }
