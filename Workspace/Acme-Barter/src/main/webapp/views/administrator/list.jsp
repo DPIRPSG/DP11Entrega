@@ -68,6 +68,19 @@
   		</display:column>
   	</display:table>
   	
+  	<h3><spring:message code="administrator.getTotalNumberOfComplaintsCreated"/></h3>
+	<!-- Result -->
+	<jstl:choose>
+  		<jstl:when test="${getTotalNumberOfComplaintsCreated == null}">
+ 			<spring:message code="administrator.ratio.null"/>
+		</jstl:when>
+  		<jstl:otherwise>
+			<jstl:out value="${getTotalNumberOfComplaintsCreated}" />
+		</jstl:otherwise>
+	</jstl:choose>
+	
+	
+  	
   	<h3><spring:message code="administrator.minumumNumberBarterPerUser"/></h3>
 	<!-- Result -->
 	<jstl:choose>
