@@ -67,7 +67,7 @@ public class AutoreplyService {
 		return result;
 	}
 	
-	private Autoreply findOne(int autoreplyId){
+	public Autoreply findOne(int autoreplyId){
 		Autoreply result;
 		
 		result = autoreplyRepository.findOne(autoreplyId);
