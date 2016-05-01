@@ -101,6 +101,18 @@
 		</jstl:otherwise>
 	</jstl:choose>
 	
+  	<h3><spring:message code="administrator.getUsersWhoHaveCreatedMoreComplaintsThatAverage"/></h3>
+	<!-- Listing grid -->
+	<display:table pagesize="5" class="displaytag" keepStatus="true"
+  		name="getUsersWhoHaveCreatedMoreComplaintsThatAverage" requestURI="${requestURI}" id="row8">
+		<!-- Attributes -->
+		<spring:message code="user.name" var="nameHeader" />
+		<display:column title="${nameHeader}" 
+  			sortable="false" >
+ 			<jstl:out value="${row8.name}"/>
+  		</display:column>
+  	</display:table>
+  	
   	
   	<h3><spring:message code="administrator.minumumNumberBarterPerUser"/></h3>
 	<!-- Result -->

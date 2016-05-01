@@ -30,5 +30,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	Collection<User> getUsersWithMoreBartersCancelled();
 	
 	@Query("select count(c) from Complaint c right join c.user u group by u")
-	Collection<Integer> getUsersWhoHaveCreatedMoreComplaintsThanTheAverage();
+	Collection<Long> getUsersWhoHaveCreatedMoreComplaintsThanTheAverage();
 }
