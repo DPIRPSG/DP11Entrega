@@ -537,16 +537,16 @@ public class UserService {
 	public Collection<User> getUsersWhoHaveCreatedMoreComplaintsThatAverage(){
 		Collection<User> result = new HashSet<>();
 		Double average = 0.0;
-		Collection<Integer> count;
-		Integer totalCount = 0;
+		Collection<Long> count;
+		Long totalCount = 0L;
 		Collection<User> allUser;
 		Collection<Complaint> allComplaints;
 		Map<User, Integer> numberOfComplaintsPerUser = new HashMap<>();
 		
 		count = userRepository.getUsersWhoHaveCreatedMoreComplaintsThanTheAverage();
 		
-		for(Integer i:count){
-			totalCount += i;
+		for(Long l:count){
+			totalCount += l;
 		}
 		
 		average = totalCount.doubleValue();
