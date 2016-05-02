@@ -63,7 +63,8 @@ public class ComplaintServiceTest extends AbstractTest {
 		// Check basic requirements
 		
 		// Execution of test
-		Assert.notNull(null, "A espera del código");
+		
+		codeResult = complaintService.getTotalNumberOfComplaintsCreated();
 		
 		// Check results
 		Assert.isTrue(testResult == codeResult);
@@ -81,15 +82,15 @@ public class ComplaintServiceTest extends AbstractTest {
 		
 		// Load objects to test
 		
-		testResult = complaintService.findAll().size() / barterService.findAll().size();
+		testResult = (double) complaintService.findAll().size() / barterService.findAll().size();
 		
 		// Check basic requirements
 		
 		// Execution of test
-		Assert.notNull(null, "A espera del código");
+		codeResult = barterService.getAverageOfComplaintsPerBarter();
 		
 		// Check results
-		Assert.isTrue(testResult == codeResult);
+		Assert.isTrue(testResult == codeResult, "Se esperaba '" + testResult + "' pero ha sido '" + codeResult +"'");
 	}
 	
 	/**
@@ -104,15 +105,15 @@ public class ComplaintServiceTest extends AbstractTest {
 		
 		// Load objects to test
 		
-		testResult = complaintService.findAll().size() / matchService.findAll().size();
+		testResult = (double) complaintService.findAll().size() / matchService.findAll().size();
 		
 		// Check basic requirements
 		
 		// Execution of test
-		Assert.notNull(null, "A espera del código");
+		codeResult = matchService.getAverageOfComplaintsPerMatch();
 		
 		// Check results
-		Assert.isTrue(testResult == codeResult);
+		Assert.isTrue(testResult == codeResult, "Se esperaba '" + testResult + "' pero ha sido '" + codeResult +"'");
 	}
 	
 	/**
