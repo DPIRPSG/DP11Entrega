@@ -43,5 +43,13 @@ public class Attribute extends DomainEntity{
 	public void setAttributesDescription(Collection<AttributeDescription> attributesDescription) {
 		this.attributesDescription = attributesDescription;
 	}
+	
+	public void addAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.add(attributeDescription);
+	}
+
+	public void removeAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.remove(attributeDescription);
+	}
 		
 }

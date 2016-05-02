@@ -115,6 +115,7 @@ public class BarterController extends AbstractController {
 		result = new ModelAndView("barter/list");
 		result.addObject("requestURI", "barter/listByUser.do?userId" + userId);
 		result.addObject("barters", barters);
+		result.addObject("userIdListing", userId);
 		if(actorService.checkAuthority("USER"))
 			result.addObject("userId", userService.findByPrincipal().getId());
 

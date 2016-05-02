@@ -17,6 +17,7 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import utilities.InvalidPostTestException;
 import utilities.InvalidPreTestException;
+import domain.Administrator;
 import domain.Barter;
 import domain.Item;
 
@@ -37,6 +38,9 @@ public class BarterServiceTest extends AbstractTest {
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private AdministratorService administratorService;
 		
 	// Tests ---------------------------------------
 	
@@ -1225,5 +1229,127 @@ are not displayed to users, only to administrators
 		result = itemService.save(result);
 		
 		return result;
+	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que un admin puede cerrar un Barter y queda guardado el admin que lo cerró
+	 */
+	@Test
+	public void testCloseBarterOk() {
+		Collection<Barter> barters;
+		Barter barter;
+		Administrator admin;
+		
+		barters = barterService.findAll();
+		barter = null;
+		
+		for(Barter b : barters) {
+			if(b.getClosed() == false) {
+				barter = b;
+				break;
+			}
+		}
+		Assert.isTrue(barter.getClosed() == false);
+		Assert.isTrue(barter.getAdministrator() == null);
+		
+		authenticate("admin");
+		admin = administratorService.findByPrincipal();
+		
+		barterService.close(barter);
+		
+		barter = barterService.findOne(barter.getId());
+		
+		Assert.isTrue(barter.getClosed() == true);
+		Assert.isTrue(barter.getAdministrator().getId() == admin.getId());
+		
+		authenticate(null);
+	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que solo un admin puede cerrar un Barter
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	@Rollback(value=true)
+	public void testCloseBarterError1() {
+		Collection<Barter> barters;
+		Barter barter;
+		//Administrator admin;
+		
+		barters = barterService.findAll();
+		barter = null;
+		
+		for(Barter b : barters) {
+			if(b.getClosed() == false) {
+				barter = b;
+				break;
+			}
+		}
+		Assert.isTrue(barter.getClosed() == false);
+		Assert.isTrue(barter.getAdministrator() == null);
+		
+		/*authenticate("admin");
+		admin = administratorService.findByPrincipal();*/
+		
+		barterService.close(barter);
+		
+		barter = barterService.findOne(barter.getId());
+		
+		Assert.isTrue(barter.getClosed() == true);
+		//Assert.isTrue(barter.getAdministrator().getId() == admin.getId());
+		
+		//authenticate(null);
+	}
+	
+	/**
+	 * An actor who is authenticated as an administrator must be able to
+	 * close a barter or a match so that no more complaints
+	 * can be created regarding it. The system must record
+	 * the administrator who closed a barter.
+	 */
+	/**
+	 * Test que comprueba que si se intenta cerrar un Barter ya cerrado, falla
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	@Rollback(value=true)
+	public void testCloseBarterError2() {
+		Collection<Barter> barters;
+		Barter barter;
+		Administrator admin;
+		
+		barters = barterService.findAll();
+		barter = null;
+		
+		for(Barter b : barters) {
+			if(b.getClosed() != false) {
+				barter = b;
+				break;
+			}
+		}
+		Assert.isTrue(barter.getClosed() == true);
+		Assert.isTrue(barter.getAdministrator() != null);
+		
+		authenticate("admin");
+		admin = administratorService.findByPrincipal();
+		
+		barterService.close(barter);
+		
+		barter = barterService.findOne(barter.getId());
+		
+		Assert.isTrue(barter.getClosed() == true);
+		Assert.isTrue(barter.getAdministrator().getId() == admin.getId());
+		
+		authenticate(null);
 	}
 }

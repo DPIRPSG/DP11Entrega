@@ -22,6 +22,7 @@
 		<form:hidden path="version"/>
 		<form:hidden path="auditor"/>
 		<form:hidden path="cancelled"/>
+		<form:hidden path="closed"/>
 		<form:hidden path="creationMoment"/>
 		<form:hidden path="offerSignsDate"/>
 		<form:hidden path="requestSignsDate"/>

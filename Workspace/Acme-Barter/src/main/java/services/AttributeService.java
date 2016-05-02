@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import domain.Attribute;
 import domain.AttributeDescription;
+import domain.Item;
 import repositories.AttributeRepository;
 
 @Service
@@ -58,19 +59,17 @@ public class AttributeService {
 		attributeRepository.save(attribute);
 	}
 	
-	/*public void delete(Attribute attribute) {
+	public void delete(Attribute attribute) {
 		Assert.notNull(attribute);
 		Assert.isTrue(attribute.getId() != 0);
 		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an admin can delete attributes");
 				
-		for(AttributeDescription a : attribute.getAttributesDescription()) {
-			a.getItem().removeAttributeDescription(a);
-			
+		for(AttributeDescription a : attribute.getAttributesDescription()) {			
 			attributeDescriptionService.delete(a);
 		}
 		
 		attributeRepository.delete(attribute);
-	}*/
+	}
 	
 	public Attribute findOne(int id) {
 		Attribute result;
@@ -92,5 +91,18 @@ public class AttributeService {
 
 	public void flush() {
 		attributeRepository.flush();
+	}
+
+	public Collection<Attribute> findAllNotUsed(Item item) {
+		Collection<Attribute> result;
+		Collection<AttributeDescription> attributesDescription;
+		
+		result = attributeRepository.findAll();
+		attributesDescription = item.getAttributesDescription();
+		for(AttributeDescription a : attributesDescription) {
+			result.remove(a.getAttribute());
+		}
+		
+		return result;
 	}
 }

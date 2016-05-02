@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AuditorService;
 import services.BarterService;
+import services.ComplaintService;
+import services.MatchService;
 import services.UserService;
 import controllers.AbstractController;
 import domain.Auditor;
@@ -29,6 +31,12 @@ public class DashboardAdministratorController extends AbstractController {
 	
 	@Autowired
 	private AuditorService auditorService;
+	
+	@Autowired
+	private ComplaintService complaintService;
+	
+	@Autowired
+	private MatchService matchService;
 	
 	// Constructors --------------------------------------------------------
 	
@@ -51,6 +59,11 @@ public class DashboardAdministratorController extends AbstractController {
 		Collection<User> getUsersAbovePencentile90;
 		Collection<User> getUsersWithNoBarterThisMonth;
 		
+		Integer getTotalNumberOfComplaintsCreated;
+		Double getAverageOfComplaintsPerBarter;
+		Double getAverageOfComplaintsPerMatch;
+		Collection<User> getUsersWhoHaveCreatedMoreComplaintsThatAverage;
+		
 		// Level B
 		
 		Integer minumumNumberBarterPerUser;
@@ -72,6 +85,11 @@ public class DashboardAdministratorController extends AbstractController {
 		getTotalNumberOfBarterCancelled = barterService.getTotalNumberOfBarterCancelled();
 		getUsersAbovePencentile90 = userService.getUsersAbovePencentile90();
 		getUsersWithNoBarterThisMonth = userService.getUsersWithNoBarterThisMonth();
+		
+		getTotalNumberOfComplaintsCreated = complaintService.getTotalNumberOfComplaintsCreated();
+		getAverageOfComplaintsPerBarter = barterService.getAverageOfComplaintsPerBarter();
+		getAverageOfComplaintsPerMatch = matchService.getAverageOfComplaintsPerMatch();
+		getUsersWhoHaveCreatedMoreComplaintsThatAverage = userService.getUsersWhoHaveCreatedMoreComplaintsThatAverage();
 				
 		// Level B
 		minumumNumberBarterPerUser = userService.minumumNumberBarterPerUser();
@@ -94,6 +112,11 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("getTotalNumberOfBarterCancelled", getTotalNumberOfBarterCancelled);
 		result.addObject("getUsersAbovePencentile90", getUsersAbovePencentile90);
 		result.addObject("getUsersWithNoBarterThisMonth", getUsersWithNoBarterThisMonth);
+		
+		result.addObject("getTotalNumberOfComplaintsCreated", getTotalNumberOfComplaintsCreated);
+		result.addObject("getAverageOfComplaintsPerBarter", getAverageOfComplaintsPerBarter);
+		result.addObject("getAverageOfComplaintsPerMatch", getAverageOfComplaintsPerMatch);
+		result.addObject("getUsersWhoHaveCreatedMoreComplaintsThatAverage", getUsersWhoHaveCreatedMoreComplaintsThatAverage);
 
 		// Level B
 		result.addObject("minumumNumberBarterPerUser", minumumNumberBarterPerUser);
