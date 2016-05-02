@@ -70,7 +70,7 @@ public class MessageService {
 	//req: 24.2
 	private Message save(Message message){
 		Assert.notNull(message);
-		Assert.isTrue(message.getSender().equals(actorService.findByPrincipal()), "Only the sender can save the message");
+//		Assert.isTrue(message.getSender().equals(actorService.findByPrincipal()), "Only the sender can save the message");
 		
 		message.setSentMoment(new Date());
 		
@@ -108,6 +108,8 @@ public class MessageService {
 		actId = actorService.findByPrincipal().getUserAccount().getId();
 		
 		Assert.isTrue(sendId == actId);
+		Assert.isTrue(message.getSender().equals(actorService.findByPrincipal()), "Only the sender can save the message");
+
 				
 		result = this.firstSave(message, false);
 		
@@ -142,7 +144,8 @@ public class MessageService {
 		}
 		
 		for (Actor recipient: message.getRecipients()){
-			this.isResponseByAutoreply(message, recipient);
+			if(!isAutoreply)
+				this.isResponseByAutoreply(message, recipient);
 			
 			for (Folder f:recipient.getMessageBoxes()){
 				boolean toInBox; //, toAutoreply;
@@ -183,7 +186,6 @@ public class MessageService {
 			if(tempResponse){
 				sendResponseAutoreply(actActorToSend, m.getSender(), m.getSubject(), auto.getText());
 				isResponse = true;
-				break;
 			}
 		}
 		
