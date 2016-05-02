@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes = { @Index(columnList = "cancelled") })
+@Table(indexes = { @Index(columnList = "cancelled"), @Index(columnList = "title") })
 public class Barter extends DomainEntity{
 
 	// Constructors -----------------------------------------------------------
