@@ -136,10 +136,12 @@ public class AutoreplyServiceTest extends AbstractTest {
 	 * 		+ Autenticarse en el sistema
 	 * 		+ Crear un nuevo autoreply sin keyWords
 	 * 		- Comprobación
-	 * 		+ Comprobar que salta una excepción del tipo: 
+	 * 		+ Comprobar que salta una excepción del tipo: ConstraintViolationException
 	 */
 	
-	@Test 
+	@Test(expected=ConstraintViolationException.class)
+	@Rollback(value = true)
+//	@Test 
 	public void testCreateAutoreplyNoKeyWords() {
 		// Declare variables
 		Actor user;
@@ -183,6 +185,8 @@ public class AutoreplyServiceTest extends AbstractTest {
 //		Assert.isTrue(newNumberOfAutoreplies == numberOfAutoreplies + 1, "El número de autoreplies listado no es el que había antes + 1");
 //		
 		unauthenticate();
+		
+		autoreplyService.flush();
 
 	}
 	
