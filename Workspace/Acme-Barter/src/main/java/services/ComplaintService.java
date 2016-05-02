@@ -169,4 +169,12 @@ public class ComplaintService {
 		return result;
 	}
 	
+	public Collection<Complaint> findByUser(User u){
+		Collection<Complaint> result;
+		
+		result = complaintRepository.findAllByUserId(u.getId());
+		
+		return result;
+	}
+	
 }
