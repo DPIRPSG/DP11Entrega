@@ -36,7 +36,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	// Tests ---------------------------------------
 
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -63,7 +63,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -98,7 +98,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -134,7 +134,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -170,7 +170,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -206,7 +206,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -246,7 +246,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -287,7 +287,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -328,7 +328,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
@@ -365,7 +365,7 @@ public class LegalTextServiceTest extends AbstractTest{
 	}
 	
 	/**
-	 * Acme-Six-Pack - Level C - 12.2
+	 * Acme-Barter - Level C - 12.2
 	 * An actor who is authenticated as an administrator must be able to:
 	 * Manage the collection of legal texts that are available to the users.
 	 * 
