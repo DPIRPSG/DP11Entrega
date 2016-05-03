@@ -63,8 +63,13 @@ public class AttributeService {
 		Assert.notNull(attribute);
 		Assert.isTrue(attribute.getId() != 0);
 		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an admin can delete attributes");
+		
+		Collection<AttributeDescription> attributesDescription;
+		
+		attributesDescription = new ArrayList<>();
+		attributesDescription.addAll(attribute.getAttributesDescription());
 				
-		for(AttributeDescription a : attribute.getAttributesDescription()) {			
+		for(AttributeDescription a : attributesDescription) {			
 			attributeDescriptionService.delete(a);
 		}
 		
