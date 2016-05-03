@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,7 +17,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(name="MatchTable")
+@Table(name="MatchTable", indexes = { @Index(columnList = "cancelled"), @Index(columnList = "offerSignsDate"), @Index(columnList = "requestSignsDate"), @Index(columnList = "creationMoment") })
+
 public class Match extends DomainEntity{
 
 	// Constructors -----------------------------------------------------------
@@ -27,6 +29,7 @@ public class Match extends DomainEntity{
 	private Date requestSignsDate;
 	private boolean cancelled;
 	private String report;
+	private boolean closed;
 	
 	
 	@NotNull
@@ -69,6 +72,13 @@ public class Match extends DomainEntity{
 	}
 	public void setReport(String report) {
 		this.report = report;
+	}
+	
+	public boolean getClosed() {
+		return closed;
+	}
+	public void setClosed(boolean closed) {
+		this.closed = closed;
 	}
 
 	// Relationships ----------------------------------------------------------

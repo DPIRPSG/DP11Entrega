@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.MatchService;
@@ -52,9 +53,22 @@ public class MatchAdministratorController extends AbstractController {
 		matchService.cancelEveryMatchNotSignedOneMonthSinceCreation();
 		
 		result = this.list();
+
+		return result;
+	}
+	
+	// Closing ---------------------------------------------------------------
+	
+	@RequestMapping(value = "/close", method = RequestMethod.GET)
+	public ModelAndView close(@RequestParam int matchId, @RequestParam int userId) {
+		ModelAndView result;
+		Match match;
 		
-//		result = new ModelAndView("match/list");
-//		result.addObject("match", match); // Devolver mensaje de error/confirmación
+		match = matchService.findOne(matchId);
+
+		matchService.close(match);
+		
+		result = new ModelAndView("redirect:../list.do?userId=" + userId);
 
 		return result;
 	}

@@ -38,6 +38,9 @@
 		
 		<bean class="converters.AuditorToStringConverter" />
 		<bean class="converters.StringToAuditorConverter" />
+
+		<bean class="converters.AutoreplyToStringConverter" />
+		<bean class="converters.StringToAutoreplyConverter" />
 		
 		<bean class="converters.BarterToStringConverter" />
 		<bean class="converters.StringToBarterConverter" />
@@ -50,6 +53,15 @@
 		
 		<bean class="converters.LegalTextToStringConverter" />
 		<bean class="converters.StringToLegalTextConverter" />
+		
+		<bean class="converters.AttributeToStringConverter" />
+		<bean class="converters.StringToAttributeConverter" />
+		
+		<bean class="converters.AttributeDescriptionToStringConverter" />
+		<bean class="converters.StringToAttributeDescriptionConverter" />
+		
+		<bean class="converters.ComplaintToStringConverter" />
+		<bean class="converters.StringToComplaintConverter" />
 	
 	</util:list>
 	

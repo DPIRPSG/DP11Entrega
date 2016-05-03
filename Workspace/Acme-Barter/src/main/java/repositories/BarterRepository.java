@@ -41,4 +41,10 @@ public interface BarterRepository extends JpaRepository<Barter, Integer> {
 	
 	@Query("select count(b) from Barter b where b.cancelled IS TRUE")
 	Integer getTotalNumberOfBarterCancelled();
+
+	@Query("select b from Barter b where b.offered.id = ?1 or b.requested.id = ?1")
+	Barter findOneByItemId(int itemId);
+	
+	@Query("select count(c) from Complaint c right join c.barter b group by b")
+	Collection<Long> getCountOfComplaintsPerBarter();
 }

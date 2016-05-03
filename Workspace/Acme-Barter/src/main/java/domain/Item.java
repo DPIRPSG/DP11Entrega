@@ -6,12 +6,17 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Table(indexes = { @Index(columnList = "name"), @Index(columnList = "description") })
 public class Item extends DomainEntity{
 
 	// Constructors -----------------------------------------------------------
@@ -51,4 +56,25 @@ public class Item extends DomainEntity{
 
 	// Relationships ----------------------------------------------------------
 
+	private Collection<AttributeDescription> attributesDescription;
+
+	@Valid
+	@NotNull
+	@OneToMany(mappedBy="item")
+	public Collection<AttributeDescription> getAttributesDescription() {
+		return attributesDescription;
+	}
+	public void setAttributesDescription(Collection<AttributeDescription> attributesDescription) {
+		this.attributesDescription = attributesDescription;
+	}
+	
+	public void addAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.add(attributeDescription);
+	}
+
+	public void removeAttributeDescription(AttributeDescription attributeDescription) {
+		this.attributesDescription.remove(attributeDescription);
+	}
+	
+	
 }

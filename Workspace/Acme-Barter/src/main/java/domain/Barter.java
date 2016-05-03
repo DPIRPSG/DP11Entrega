@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes = { @Index(columnList = "cancelled") })
+@Table(indexes = { @Index(columnList = "cancelled"), @Index(columnList = "title") })
 public class Barter extends DomainEntity{
 
 	// Constructors -----------------------------------------------------------
@@ -31,6 +31,7 @@ public class Barter extends DomainEntity{
 	private String title;
 	private boolean cancelled;
 	private Date registerMoment;
+	private boolean closed;
 
 	@NotBlank
 	@NotNull
@@ -58,8 +59,16 @@ public class Barter extends DomainEntity{
 		this.registerMoment = registerMoment;
 	}
 	
+	public boolean getClosed() {
+		return closed;
+	}
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}
+	
 	// Relationships ----------------------------------------------------------
 	private User user;
+	private Administrator administrator;
 	private Item offered;
 	private Item requested;
 	private Collection<Match> createdMatch;
@@ -74,6 +83,15 @@ public class Barter extends DomainEntity{
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@Valid
+	@ManyToOne(optional=true)
+	public Administrator getAdministrator() {
+		return administrator;
+	}
+	public void setAdministrator(Administrator admin) {
+		this.administrator = admin;
 	}
 	
 	@Valid

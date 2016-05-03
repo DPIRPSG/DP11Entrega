@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.BarterRepository;
+import domain.Administrator;
 import domain.Barter;
 import domain.Match;
 import domain.User;
@@ -31,6 +32,9 @@ public class BarterService {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private AdministratorService administratorService;
 	
 	// Constructors -----------------------------------------------------------
 
@@ -156,6 +160,7 @@ public class BarterService {
 		barter.setCreatedMatch(createdMatch);
 		barter.setReceivedMatch(receivedMatch);
 		barter.setRelatedBarter(relatedBarter);
+		barter.setClosed(false);
 		
 		return barter;
 		
@@ -188,6 +193,7 @@ public class BarterService {
 			relatedBarter = new ArrayList<>();
 			
 			barter.setCancelled(false);
+			barter.setClosed(false);
 			barter.setRegisterMoment(new Date());
 			
 			barter.setUser(user);
@@ -250,6 +256,25 @@ public class BarterService {
 		
 	}
 	
+	public void close(Barter barter) {
+		
+		Assert.isTrue(actorService.checkAuthority("ADMIN"), "Only an Admin loged in into the system can cancel a Barter.");
+		
+		Assert.notNull(barter);
+		
+		Assert.isTrue(!barter.getClosed(), "This barter is already closed!");
+		
+		Administrator admin;
+		
+		admin = administratorService.findByPrincipal();
+		
+		barter.setClosed(true);
+		barter.setAdministrator(admin);
+		
+		this.save(barter);
+		
+	}
+	
 	//DASHBOARD
 	public Integer getTotalNumberOfBarterRegistered(){
 		Integer result;
@@ -265,17 +290,6 @@ public class BarterService {
 		result = barterRepository.getTotalNumberOfBarterCancelled();
 		
 		return result;
-	}
-	
-	private int countRelateBarter(Barter barterOrigin, Barter barterToCount){
-		int res = 0;
-		
-		for(Barter a:barterOrigin.getRelatedBarter()){
-			if(a.equals(barterToCount))
-				res++;
-		}
-		
-		return res;
 	}
 	
 	public Double ratioBarterNotRelatedToAnyOtherBarter(){
@@ -320,5 +334,35 @@ public class BarterService {
 		result.addAll(b.getRelatedBarter());
 
 		return result;
+	}
+
+	public Barter findOneByItemId(int itemId) {
+		Barter result;
+		
+		result = barterRepository.findOneByItemId(itemId);
+		
+		return result;
+	}
+	
+	public Double getAverageOfComplaintsPerBarter(){
+		Double result = 0.0;
+		Collection<Long> count;
+		Long totalCount = 0L;
+		
+		count = barterRepository.getCountOfComplaintsPerBarter();
+		
+		for(Long l:count){
+			totalCount += l;
+		}
+		
+		result = totalCount.doubleValue();
+		if(count.size() != 0){
+			result = result / count.size();
+		}else{
+			result = 0.0;
+		}
+		
+		return result;
+		
 	}
 }
