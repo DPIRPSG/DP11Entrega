@@ -55,6 +55,7 @@ public class AttributeService {
 	
 	public void save(Attribute attribute) {
 		Assert.notNull(attribute);
+		Assert.isTrue(actorService.checkAuthority("ADMIN") || actorService.checkAuthority("USER"));
 		
 		attributeRepository.save(attribute);
 	}
