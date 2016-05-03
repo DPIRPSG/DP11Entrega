@@ -58,32 +58,6 @@ public class ComplaintService {
 		
 		result.setUser(user);
 		
-//		try{
-//			
-//			Barter barter;
-//			
-//			barter = barterService.findOne(barterOrMatchId);
-//			
-//			result.setBarter(barter);
-//			
-//		}catch(Exception barterException){
-//			
-//			try{
-//				
-//				Match match;
-//				
-//				match = matchService.findOne(barterOrMatchId);
-//				
-//				result.setMatch(match);
-//				
-//			}catch(Exception matchAndBarterException){
-//				
-//				Assert.isTrue(false, "You can't create a Complaint without a Barter or a Match asociated.");
-//				
-//			}
-//			
-//		}
-		
 		Barter barter;
 		
 		barter = barterService.findOne(barterOrMatchId);
@@ -99,8 +73,6 @@ public class ComplaintService {
 			Assert.notNull(match, "You can't create a Complaint without a Barter or a Match asociated.");
 			
 			result.setMatch(match);
-			
-			
 			
 		}
 		
@@ -127,6 +99,7 @@ public class ComplaintService {
 			Assert.isTrue(matchesInvolved.contains(complaint.getMatch()), "You can't create a Complaint to a Match in which you aren't involved.");
 			Assert.isTrue(!complaint.getMatch().getClosed(), "You can't create a Complaint for a closed Match.");
 		}else{ // Si está siendo creado para un Barter
+			Assert.isTrue(complaint.getBarter().getUser() != user, "You can't create a Complaint for your Barters.");
 			Assert.isTrue(!complaint.getBarter().getClosed(), "You can't create a Complaint for a closed Barter.");
 		}
 		
