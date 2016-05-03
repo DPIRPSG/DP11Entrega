@@ -14,6 +14,7 @@ import domain.Barter;
 import domain.Complaint;
 import domain.Match;
 
+import services.ActorService;
 import services.BarterService;
 import services.ComplaintService;
 import services.MatchService;
@@ -32,6 +33,9 @@ public class ComplaintController extends AbstractController {
 	
 	@Autowired
 	private BarterService barterService;
+	
+	@Autowired
+	private ActorService actorService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -46,10 +50,12 @@ public class ComplaintController extends AbstractController {
 		ModelAndView result;
 		Collection<Complaint> complaints;
 		String barterOrMatchName;
+		Integer userId;
 
 		complaints = complaintService.findAllByBarterOrMatch(barterOrMatchId);
 		
 		barterOrMatchName = null;
+		userId = null;
 		
 		try{
 			
@@ -77,6 +83,10 @@ public class ComplaintController extends AbstractController {
 			
 		}
 		
+		if(actorService.checkAuthority("USER")){
+			userId = actorService.findByPrincipal().getId();
+		}
+		
 		Assert.notNull(barterOrMatchName, "You have to choose a Barter or a Match to see the Complaints asociated.");
 		
 		result = new ModelAndView("complaint/list");
@@ -84,6 +94,10 @@ public class ComplaintController extends AbstractController {
 		result.addObject("complaints", complaints);
 		result.addObject("barterOrMatchId", barterOrMatchId);
 		result.addObject("barterOrMatchName", barterOrMatchName);
+		if(actorService.checkAuthority("USER")){
+			result.addObject("userId", userId);
+		}
+		
 
 		return result;
 	}
