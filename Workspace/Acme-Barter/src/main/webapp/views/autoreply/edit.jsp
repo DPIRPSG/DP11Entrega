@@ -17,6 +17,7 @@
 	<form:hidden path="version" />
 	<form:hidden path="actor" />
 	
+	<spring:message code="autoreply.keyWords.set" />
 	<acme:textbox code="autoreply.keyWords" path="keyWords"/>
 	<acme:textarea code="autoreply.text" path="text"/>
 	
