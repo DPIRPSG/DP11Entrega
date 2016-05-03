@@ -16,5 +16,9 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
 	
 	@Query("select count(c) from Complaint c")
 	Integer getTotalNumberOfComplaintsCreated();
+	
+	@Query("select c from Complaint c where c.user.id = ?1")
+	Collection<Complaint> findAllByUserId(int userId);
+	
 
 }
