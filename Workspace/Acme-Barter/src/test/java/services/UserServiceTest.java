@@ -899,12 +899,15 @@ public class UserServiceTest extends AbstractTest {
 
 		// Execution of test
 		
-		Assert.notNull(null, "A espera de la realización del código");
+		codeResult = userService.getUsersWhoHaveCreatedMoreComplaintsThatAverage();
 		
 				// En la variable inTest están los usuarios que debería devolver la query
 		
-		
 		// Checks results	
+		
+		Assert.isTrue(testCalculate.size() == codeResult.size(), "Se esperaban '" + testCalculate.size() + "' pero han sido '" + codeResult.size() +"'");
+		Assert.isTrue(codeResult.containsAll(testCalculate), "El método no devuelve lo esperado");
+		Assert.isTrue(testCalculate.containsAll(codeResult), "El método no devuelve lo esperado");
 	}
 	
 }

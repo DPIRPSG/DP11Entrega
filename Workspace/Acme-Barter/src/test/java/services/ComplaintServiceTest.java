@@ -79,10 +79,17 @@ public class ComplaintServiceTest extends AbstractTest {
 	public void testAverageComplaintsBarter(){
 		// Declare variable
 		double testResult, codeResult;
+		int complaintsWithBarter;
 		
 		// Load objects to test
+		complaintsWithBarter = 0;
 		
-		testResult = (double) complaintService.findAll().size() / barterService.findAll().size();
+		for(Complaint a:complaintService.findAll()){
+			if(a.getBarter() != null)
+				complaintsWithBarter++;
+		}
+		
+		testResult = (double) complaintsWithBarter / barterService.findAll().size();
 		
 		// Check basic requirements
 		
@@ -102,10 +109,17 @@ public class ComplaintServiceTest extends AbstractTest {
 	public void testAverageComplaintsMatch(){
 		// Declare variable
 		double testResult, codeResult;
+		int complaintsWithMatch;
 		
 		// Load objects to test
+		complaintsWithMatch = 0;
 		
-		testResult = (double) complaintService.findAll().size() / matchService.findAll().size();
+		for(Complaint a:complaintService.findAll()){
+			if(a.getMatch() != null)
+				complaintsWithMatch++;
+		}
+		
+		testResult = (double) complaintsWithMatch / matchService.findAll().size();
 		
 		// Check basic requirements
 		

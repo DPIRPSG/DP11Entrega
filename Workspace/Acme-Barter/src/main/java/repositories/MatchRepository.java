@@ -11,10 +11,10 @@ import domain.Match;
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Integer> {
 	
-	@Query("select m from Match m join m.creatorBarter cb join m.receiverBarter rb where m.cancelled = false and ( cb.user.id = ?1 or  rb.user.id = ?1)")
+	@Query("select m from Match m where m.cancelled = false and ( m.creatorBarter.user.id = ?1 or  m.receiverBarter.user.id = ?1)")
 	Collection<Match> findAllUserInvolves(int userId);
 	
-	@Query("select m from Match m join m.creatorBarter cb join m.receiverBarter rb where cb.user.id = ?1 or  rb.user.id = ?1")
+	@Query("select m from Match m where m.creatorBarter.user.id = ?1 or m.receiverBarter.user.id = ?1")
 	Collection<Match> findAllUserInvolvesIncludeCancelled(int userId);
 	
 	// Every [barter]match that remains unsigned one month after they were created.
@@ -27,7 +27,7 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 	@Query("select distinct m from User a join a.followed u, Match m where a.id=?1 and (m.creatorBarter.user.id = u.id or m.receiverBarter.user.id = u.id) order by m.creationMoment desc")
 	Collection<Match> findAllByFollowedUser(int userId);
 	
-	@Query("select m from Match m join m.auditor a where a.id=?1 order by m.creationMoment desc")
+	@Query("select m from Match m where m.auditor.id=?1 order by m.creationMoment desc")
 	Collection<Match> findAllByAuditorId(int auditorId);
 	
 	@Query("select count(c) from Complaint c right join c.match m group by m")
