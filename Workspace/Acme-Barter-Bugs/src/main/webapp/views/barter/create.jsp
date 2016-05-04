@@ -17,6 +17,7 @@
 	<!-- Editable Attributes -->
 	<acme:textbox code="barter.title" path="title"/>
 	<br/>
+	
 	<spring:message code="barter.offered" />
 	
 	<acme:textbox code="item.name" path="offeredName"/>

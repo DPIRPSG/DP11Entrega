@@ -35,4 +35,6 @@
 	
 	<acme:cancel code="barter.cancel" url="barter/administrator/list.do"/>
 	
+	
+	
 </form:form>
