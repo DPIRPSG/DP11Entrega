@@ -30,8 +30,10 @@
 		<!-- Action buttons -->
 		<acme:submit name="save" code="socialIdentity.save"/>
 		&nbsp;
-		<acme:submit name="delete" code="socialIdentity.delete"/>
-		&nbsp;
+		<jstl:if test="${socialIdentity.id != 0}">
+			<acme:submit name="delete" code="socialIdentity.delete"/>
+			&nbsp;
+		</jstl:if>
 		<acme:cancel url="socialIdentity/user/list.do" code="socialIdentity.cancel"/>
 		<br />
 		
