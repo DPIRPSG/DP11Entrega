@@ -247,7 +247,7 @@ public class ComplaintServiceTest extends AbstractTest {
 		
 		barters = barterService.findAll();
 		for(Barter b : barters) {
-			if(b.getUser().getId() != user.getId() && b.getClosed() == false) {
+			if(b.getUser().getId() == user.getId() && b.getClosed() == false) {
 				barter = b;
 				break;
 			}
