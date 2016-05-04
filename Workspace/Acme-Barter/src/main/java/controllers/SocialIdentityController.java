@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.SocialIdentity;
+import domain.User;
+import services.ActorService;
 import services.SocialIdentityService;
+import services.UserService;
 
 @Controller
 @RequestMapping(value = "/socialIdentity")
@@ -20,6 +23,12 @@ public class SocialIdentityController extends AbstractController{
 
 	@Autowired
 	private SocialIdentityService socialIdentityService;
+	
+	@Autowired
+	private ActorService actorService;
+	
+	@Autowired
+	private UserService userService;
 	
 	//Constructors ----------------------------------------------------------
 	
@@ -40,6 +49,12 @@ public class SocialIdentityController extends AbstractController{
 		result = new ModelAndView("socialIdentity/list");
 		result.addObject("socialIdentities", socialIdentities);
 		result.addObject("requestURI", "socialIdentity/list.do");
+		if(actorService.checkAuthority("USER")){
+			User us;
+			
+			us = userService.findByPrincipal();
+			result.addObject("actUserId", us.getId());
+		}
 		
 		return result;
 	}
