@@ -33,6 +33,8 @@
 	<!-- Action buttons -->
 	<acme:submit name="save" code="barter.save"/>
 	
-	<acme:cancel code="barter.cancel" url="barter/administrator/list.do"/>
+<%-- 	<acme:cancel code="barter.cancel" url="barter/administrator/list.do"/> --%>
+	<acme:cancel code="barter.cancel" url="barter/administrator/edit.do?barterId=${barter.id}"/>	
+	
 	
 </form:form>
