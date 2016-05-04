@@ -11,16 +11,16 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <!-- Form -->
-<form:form action="attribute-description/user/edit.do" modelAttribute="attributeDescription">
+<form:form action="attribute-description/user/edit.do" modelAttribute="aattributeDescription">
 	<!-- Hidden Attributes -->
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="item"/>
-	<jstl:if test="${attributeDescription.id != 0}">
+	<jstl:if test="${aattributeDescription.id != 0}">
 		<form:hidden path="attribute"/>
 	</jstl:if>
 
-	<jstl:if test="${attributeDescription.id == 0}">
+	<jstl:if test="${aattributeDescription.id == 0}">
 		<acme:select items="${attributes}" itemLabel="name" code="attributeDescription.attribute" path="attribute"/>
 	</jstl:if>
 	<acme:textarea code="attributeDescription.value" path="value" />
@@ -29,7 +29,7 @@
 	<!-- Action buttons -->
 	<acme:submit name="save" code="attributeDescription.save"/>
 	&nbsp;
-	<jstl:if test="${attributeDescription.id != 0}">
+	<jstl:if test="${aattributeDescription.id != 0}">
 		<acme:submit_confirm name="delete" code="attributeDescription.delete" codeConfirm="attributeDescription.confirm.delete" />
 		&nbsp;
 	</jstl:if>

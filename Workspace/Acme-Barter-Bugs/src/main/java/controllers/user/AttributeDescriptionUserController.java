@@ -160,7 +160,7 @@ public class AttributeDescriptionUserController extends AbstractController {
 		itemId = attributeDescription.getItem().getId();
 				
 		result = new ModelAndView("attribute-description/edit");
-		result.addObject("attributeDescription", attributeDescription);
+		result.addObject("aattributeDescription", attributeDescription);
 		result.addObject("attributes", attributes);
 		result.addObject("message", message);
 		result.addObject("itemId", itemId);
