@@ -30,7 +30,7 @@
 	<spring:message code="legalText.text" var="textHeader" />
 	<display:column title="${textHeader}"
 		sortable="true">
-		<jstl:out value="${row_LegalText.text}"/>
+		${row_LegalText.text}
 	</display:column>
 </display:table>
 
