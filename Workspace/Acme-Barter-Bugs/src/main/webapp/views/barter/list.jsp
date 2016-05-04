@@ -59,11 +59,14 @@
 		</display:column>
 	</security:authorize>
 
+<%-- 	<spring:message code="barter.title" var="titleHeader" /> --%>
+<%-- 	<display:column title="${titleHeader}" --%>
+<%-- 		sortable="true"> --%>
+<%-- 		<jstl:out value="${row_Barter.title}"/> --%>
+<%-- 	</display:column> --%>
+	
 	<spring:message code="barter.title" var="titleHeader" />
-	<display:column title="${titleHeader}"
-		sortable="true">
-		<jstl:out value="${row_Barter.title}"/>
-	</display:column>
+	<display:column property="title" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="barter.registerMoment" var="registerMomentHeader" />
 	<display:column title="${registerMomentHeader}"
