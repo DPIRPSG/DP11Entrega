@@ -29,15 +29,22 @@
 		name="matches" requestURI="${requestURI}" id="row_Match">
 		
 	<!-- Attributes -->
+		
 	<spring:message code="match.creationMoment" var="creationMomentHeader" />
-	<acme:displayColumn title="${creationMomentHeader}" sorteable="true" value="${row_Match.creationMoment}" format="{0,date,yyyy/MM/dd}"/>
+	<display:column title="${creationMomentHeader}" sortable="true">
+		<fmt:formatDate value="${row_Match.creationMoment}" pattern="yyyy-MM-dd HH:mm:ss"/>
+	</display:column>
 	
 	<spring:message code="match.offerSignsDate" var="offerSignsDateHeader" />
-	<acme:displayColumn title="${offerSignsDateHeader}" sorteable="true" value="${row_Match.offerSignsDate}" format="{0,date,yyyy/MM/dd}"/>
+	<display:column title="${offerSignsDateHeader}" sortable="true">
+		<fmt:formatDate value="${row_Match.offerSignsDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+	</display:column>
 	
 	<spring:message code="match.requestSignsDate" var="requestSignsDateHeader" />
-	<acme:displayColumn title="${requestSignsDateHeader}" sorteable="true" value="${row_Match.requestSignsDate}" format="{0,date,yyyy/MM/dd}"/>
-	
+	<display:column title="${requestSignsDateHeader}" sortable="true">
+		<fmt:formatDate value="${row_Match.requestSignsDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+	</display:column>
+		
 	<spring:message code="match.legalText" var="legalTextHeader" />
 	<acme:displayColumn title="${legalTextHeader}" sorteable="true" value="${row_Match.legalText.text}"/>
 	
