@@ -14,7 +14,7 @@
 
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="false"
+<display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="attributesDescription" requestURI="${requestURI}" id="row_AttributeDescription">
 	<!-- Action links -->
 

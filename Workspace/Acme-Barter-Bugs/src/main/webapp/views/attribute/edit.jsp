@@ -27,7 +27,7 @@
 		<acme:submit_confirm name="delete" code="attribute.delete" codeConfirm="attribute.confirm.delete" />
 		&nbsp;
 	</jstl:if>
-	<acme:cancel url="attribute/administrator/list.do" code="attribute.cancel"/>
+	<acme:cancel url="about-us/index.do" code="attribute.cancel"/>
 	<br />
 
 </form:form>
