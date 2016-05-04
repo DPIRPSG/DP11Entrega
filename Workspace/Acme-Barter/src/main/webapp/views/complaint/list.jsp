@@ -38,8 +38,10 @@
 		</jstl:if>
 	</jstl:if>
 	<jstl:if test="${ row_Complaint.match != null }">
-		<jstl:if test="${ row_Complaint.match.closed == false }">
-			<a href="complaint/user/create.do?barterOrMatchId=${barterOrMatchId}"><spring:message code="complaint.create"/></a>
+		<jstl:if test="${ row_Complaint.match.creatorBarter.user.id == userId || row_Complaint.match.receiverBarter.user.id == userId }">
+			<jstl:if test="${ row_Complaint.match.closed == false }">
+				<a href="complaint/user/create.do?barterOrMatchId=${barterOrMatchId}"><spring:message code="complaint.create"/></a>
+			</jstl:if>
 		</jstl:if>
 	</jstl:if>
 	<jstl:if test="${ row_Complaint == null }">

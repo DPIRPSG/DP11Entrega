@@ -53,7 +53,8 @@
 	</display:table>
 	
 	<!-- Action links -->
-	<jstl:if test="${actUserId == row_social.user.id || isProperty}">
+	<jstl:if test="${(actUserId == row_social.user.id && row_social.user.id != null)
+				|| isProperty}">
 	<div>
 		<b><a href="socialIdentity/user/edit.do"> 
 			<spring:message code="socialIdentity.create" />
