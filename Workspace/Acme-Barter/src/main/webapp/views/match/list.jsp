@@ -80,7 +80,14 @@
 	
 	<security:authorize access="hasAnyRole('ADMIN', 'AUDITOR')">
 		<spring:message code="match.cancelled" var="cancelledHeader" />
-		<acme:displayColumn title="${cancelledHeader}" sorteable="true" value="${row_Match.cancelled}"/>
+		<display:column title="${cancelledHeader}" sortable="true">
+			<jstl:if test="${row_Match.cancelled == true}">
+			<spring:message code="match.yes" />
+		</jstl:if>
+		<jstl:if test="${row_Match.cancelled == false}">
+			<spring:message code="match.no" />
+		</jstl:if>
+		</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('USER')">
