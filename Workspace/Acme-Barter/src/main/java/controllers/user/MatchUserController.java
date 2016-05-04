@@ -49,7 +49,7 @@ public class MatchUserController extends AbstractController {
 	// Listing ----------------------------------------------------------------
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(String requestURI) {
 		ModelAndView result;
 		Collection<Match> matches;
 		User user;
@@ -61,7 +61,7 @@ public class MatchUserController extends AbstractController {
 		matches = matchService.findAllUserInvolves(userId);
 		
 		result = new ModelAndView("match/list");
-		result.addObject("requestURI", "match/user/list.do");
+		result.addObject("requestURI", requestURI);
 		result.addObject("matches", matches);
 		result.addObject("userId", userId);
 
@@ -144,12 +144,15 @@ public class MatchUserController extends AbstractController {
 	public ModelAndView cancel(@RequestParam Integer matchId) {
 		ModelAndView result;
 		Match match;
+		String requestURI;
 
 		match = matchService.findOne(matchId);
 		
 		matchService.cancel(match);
 		
-		result = this.list();
+		requestURI = "match/user/list.do";
+		
+		result = this.list(requestURI);
 
 		return result;
 	}
@@ -160,12 +163,15 @@ public class MatchUserController extends AbstractController {
 	public ModelAndView sign(@RequestParam Integer matchId) {
 		ModelAndView result;
 		Match match;
+		String requestURI;
 
 		match = matchService.findOne(matchId);
 		
 		matchService.sign(match);
 		
-		result = this.list();
+		requestURI = "match/user/sign.do";
+		
+		result = this.list(requestURI);
 
 		return result;
 	}
