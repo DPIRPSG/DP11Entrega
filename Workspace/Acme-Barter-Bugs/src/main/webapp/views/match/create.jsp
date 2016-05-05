@@ -69,7 +69,7 @@
 		<!-- Action buttons -->
 		<acme:submit name="save" code="match.create.save"/>
 		&nbsp;
-		<acme:cancel code="match.create.cancel" url="/match/user/list.do"/>
+		<acme:cancel code="match.create.cancel" url="/barter/user/list.do"/>
 		
 	</form:form>
 

@@ -32,9 +32,7 @@
 
 	<jstl:if test="${ row_Complaint.barter != null }">
 		<jstl:if test="${ row_Complaint.barter.user.id != userId }">
-			<jstl:if test="${ row_Complaint.barter.closed == false }">
-				<a href="complaint/user/create.do?barterOrMatchId=${barterOrMatchId}"><spring:message code="complaint.create"/></a>
-			</jstl:if>
+			<a href="complaint/user/create.do?barterOrMatchId=${barterOrMatchId}"><spring:message code="complaint.create"/></a>
 		</jstl:if>
 	</jstl:if>
 	<jstl:if test="${ row_Complaint.match != null }">
