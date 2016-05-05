@@ -3,6 +3,9 @@ A continuación se detallan lo que hemos considerado aspectos importantes a tener
 Respecto a los Barters:
 - Tras discutirlo y hablarlo con nuestro profesor de prácticas, decidimos que un user pueda cancelar su propio barter. En el Statement nos especifican que sólo lo puede hacer un admin pero tras discutirlo con nuestro ingeniero de requisitos, vimos positivo que un user lo pudiese hacer ya que podría haber vendido el objeto en cuestión en otro sitio o se pudo haber producido una avería o la pérdida del mismo, razón más que suficiente para cancelar tu propio barter.
 
+Respecto a las AutoReplies:
+- Hemos decidido que las autoreplies sólo miren el contenido del cuerpo del mensaje dejando de lado el asunto porque nosotros entendemos como contenido de un mensaje, su cuerpo y no el conjunto formado por el cuerpo y el asunto, así que hemos visto innecesario incluir a los asuntos en el sistema de autoreplies.
+
 Respecto al despliegue:
 - Al desplegar el proyecto puede aparecer el error "java.lang.OutOfMemoryError: PermGen space" lo que provoca:
   + Que el servidor se estanque y no se pueda cargar el .war.
