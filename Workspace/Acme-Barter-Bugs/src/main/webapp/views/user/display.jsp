@@ -16,7 +16,7 @@
 	<table>
 
 	<acme:display code="user.name" value="${user.name}"/>
-	<acme:display code="user.surname" value="${user.surname}"/>
+	<acme:display code="user.name" value="${user.name}"/>
 	<acme:display code="user.phone" value="${user.phone}"/>
 	<acme:display code="user.username" value="${user.userAccount.username}"/>
 	

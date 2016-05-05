@@ -53,6 +53,15 @@ public class MessageActorController extends AbstractController{
         
         folder = folderService.findOne(folderId);
         
+        for (Folder a : folderService.findAllByActor()){
+        	if(a.getId()!= folderId && (folder.getName().equals("InBox")||folder.getName().equals("OutBox"))){
+        		folderId = a.getId();
+        		break;
+        	}
+        }
+        
+        folder = folderService.findOne(folderId);
+        
         folderService.checkActor(folder);
         
         messages = messageService.findAllByFolder(folder);

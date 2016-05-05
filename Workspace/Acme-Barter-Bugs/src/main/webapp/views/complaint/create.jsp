@@ -27,6 +27,7 @@
 		<!-- Editable Attributes -->
 		
 		<acme:textbox code="complaint.text" path="text"/>
+		<form:errors path="text" cssClass="error" />
 				
 		<!-- Action buttons -->
 		<acme:submit name="save" code="complaint.create.save"/>
