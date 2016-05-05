@@ -144,15 +144,16 @@ public class MatchUserController extends AbstractController {
 	public ModelAndView cancel(@RequestParam Integer matchId) {
 		ModelAndView result;
 		Match match;
-		String requestURI;
+		//String requestURI;
 
 		match = matchService.findOne(matchId);
 		
 		matchService.cancel(match);
 		
-		requestURI = "match/user/list.do";
+		//requestURI = "match/user/list.do";
 		
-		result = this.list(requestURI);
+		//result = this.list(requestURI);
+		result = new ModelAndView("redirect:list.do");
 
 		return result;
 	}
@@ -163,15 +164,16 @@ public class MatchUserController extends AbstractController {
 	public ModelAndView sign(@RequestParam Integer matchId) {
 		ModelAndView result;
 		Match match;
-		String requestURI;
+		//String requestURI;
 
 		match = matchService.findOne(matchId);
 		
 		matchService.sign(match);
 		
-		requestURI = "match/user/sign.do";
+		//requestURI = "match/user/sign.do";
 		
-		result = this.list(requestURI);
+		//result = this.list(requestURI);
+		result = new ModelAndView("redirect:list.do");
 
 		return result;
 	}
