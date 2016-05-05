@@ -66,9 +66,10 @@ public class SocialIdentityUserController extends AbstractController {
 	public ModelAndView create(
 			@RequestParam(required = false, defaultValue = "") String socialIdentityId) {
 		ModelAndView result;
-		
 		SocialIdentity socialIdentity;
 
+		socialIdentityId = "";
+		
 		// Si no la tiene debería crearla
 		socialIdentity = socialIdentityService.findOrCreateById(socialIdentityId);
 
