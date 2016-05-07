@@ -1,0 +1,239 @@
+Resultado de las pruebas de aceptación Guillermo:
+
+USE CASE 001:
+
+Check #001:
+- Outcome: OK
+- Notes: El orden especificado es diferente al que se muestra en la plantilla. Para entrar no se entra pulsando “Registrarse” sino “Registrar > Nuevo Usuario”.
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: FAIL, no sale el error en el campo de los apellidos.
+- Notes: -
+
+Check #004:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: Test mal planteado
+- Notes: Al rellenar todos los campos correctamente, entiendo que debo rellenar todo incluido “Confirmar contraseña”. En este test se me pide que no deje marcado el check de “Aceptar las condiciones”. Al hacer lo que se me pide el test es imposible que salga el error requerido ya que en ningún momento se pide que se pongan contraseñas que no coincidan. Si lo que se me pide es que pruebe que al poner “Contraseña” y “Confirmar contraseña” salte el error, debes haber marcado “Aceptar las condiciones“ y entonces, saldrá el error que nos piden. Si dejas sin marcar “Aceptar las condiciones”, no saldrá el error.
+
+Check #006:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 002:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+Check #004:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: OK
+- Notes: Sólo se busca por “Título”, “Artículo ofrecido” y “Artículo solicitado”, tal y como se especifica en el Statement de Acme-Barter 1.0
+
+
+USE CASE 003:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: Populate insuficiente. No se podía probar si funciona ya que no hay información suficiente para que se pagine la tabla. He creado los usuarios que faltaban para ver que funciona.
+
+Check #003:
+- Outcome: OK
+- Notes: Al intentar comprobar que las tablas de las coincidencias se paginan bien me pide loguearme y al loguearme sale un fallo de que no puedo acceder. Respecto a las tablas a las que si puedo acceder, sí se paginan bien.
+
+Check #004:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: OK
+- Notes: -
+
+Check #006:
+- Outcome: OK
+- Notes: -
+
+Check #007:
+- Outcome: FAIL
+- Notes: Me redirige a la URL “www.acme.com/FALLO”.
+
+
+USE CASE 004:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 005:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+Check #004:
+- Outcome: OK
+- Notes: Al cargar la página de “Nuevo mensaje” por primera vez, no te deja elegir destinatario (El select te sale vacío). Una vez que le das a enviar y salen los errores de que los campos no pueden estar vacíos, el select se arregla.
+
+
+USE CASE 006:
+
+Check #001:
+- Outcome: FAIL
+- Notes: No puedo probar cómo se ve la lista de carpetas porque el populate no crea otras carpetas y en la vista de creación de carpetas falta el botón de crear.
+
+Check #002:
+- Outcome: FAIL
+- Notes: La paginación no funciona bien. Cuando pasas de una página a otra en la vista de Inbox, te manda a otra página de Outbox y viceversa.
+
+Check #003:
+- Outcome: OK
+- Notes: Debido al bug de Use Case 006, Check #002, tienes que elegir una columna, te llevará a la otra carpeta y al volver, ya se ve ordenado.
+
+Check #004:
+- Outcome: OK
+- Notes: Cuando borras un registro colgante, desaparecen los botones de eliminar. Desde la papelera te vas a la vista dónde veías el mensaje, y ya no puedes borrar más mensajes.
+
+Check #005:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 007:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: FAIL
+- Notes: Al darle al botón de cancelar, me redirige a la vista de editar carpeta.
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+Check #004:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: OK
+- Notes: -
+
+Check #006:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 008:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+Check #004:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: OK
+- Notes: -
+
+Check #006:
+- Outcome: FAIL
+- Notes: No sale el error de que el nombre no puede estar en blanco.
+
+Check #007:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 009:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #005:
+- Outcome: FAIL
+- Notes: Me devuelve a la vista de usuarios en vez de a la vista de intercambios.
+
+Check #006:
+- Outcome: OK
+- Notes: -
+
+Check #007:
+- Outcome: OK
+- Notes: -
+
+Check #008:
+- Outcome: OK
+- Notes: -
+
+
+USE CASE 010:
+
+Check #001:
+- Outcome: OK
+- Notes: -
+
+Check #002:
+- Outcome: OK
+- Notes: -
+
+Check #003:
+- Outcome: OK
+- Notes: -
+
+Check #004:
+- Outcome: FAIL
+- Notes:  No se muestra el botón de guardar con lo que no puedo probar si te redirecciona donde debe.
+
