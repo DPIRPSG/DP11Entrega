@@ -12,3 +12,8 @@ Level_B_03.03; Manolo(2); 90-10-20;45;29
 Level_A_02.01; Manolo(2); 90-10-20;95;56
 Level_A_02.02; Manolo(2); 90-10-20;96;57
 Level_A_03.01; Manolo(2); 90-10-20;26;20
+----- Acme-Barter-2.0 -----
+List AutoReplies; Manolo(2); 90-10-20;186;81
+Create AutoReplies; Manolo(2); 70-10-20;13462;7413
+Create AutoReplies; manolo(2); 90-10-20;27006;13096
+Edit an AutoReply; manolo(2); 90-10-20;952;447
